@@ -10,6 +10,6 @@ CREATE TABLE expired_tokens(
     token_id varchar(255) primary key
 );
 
-CREATE TABLE questions(
-    
-)
+CREATE TABLE saved_sessions(
+    session_id varchar(255) primary key
+);
