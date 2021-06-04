@@ -157,7 +157,7 @@
     <script>
         $( document ).ready(function() {
            if ("<%= errorMessage %>"){
-            toastr["success"]("<%= errorMessage%>")}
+            toastr["error"]("<%= errorMessage%>")}
             toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -262,13 +262,17 @@ function testLocalStorageData() {
     <div class="container">
         <div class="card card-container">
             <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-    <form action="/signin" method="POST" class="form-signin">
+    <form action="/signup" method="POST" class="form-signin">
         <label>Εmail</label>
         <input type="email" class="form-control" name="email" placeholder="Email">
         
         <label>Κωδικός</label>
-        <input type="password" class="form-control" name="password" placeholder="Password">
-        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Είσοδος</button>
+        <input type="password" class="form-control" name="password1" placeholder="Password">
+
+        <label>Επαλήθευση Κωδικού</label>
+        <input type="password" class="form-control" name="password2" placeholder="Password">
+
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Εγγραφή</button>
     </form></div></div>
 
     <!-- <div class="container">

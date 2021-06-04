@@ -10,7 +10,17 @@
     <body>
         
     
-    <p>slea</p>
+    <p>sela</p>
+
+    <p> User id is <%= user.id %> and email <%= user.email %> </p>
+    <% if (isAuthenticated){ %>
+            <p>He is logged in</p>
+        
+        <% } else { %>
+            <p>He is not logged in</p>
+        <% } %> 
+
+
     <script>
         $( document ).ready(function() {
            if ("<%= errorMessage %>"){

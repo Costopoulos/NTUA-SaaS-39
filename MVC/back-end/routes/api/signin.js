@@ -7,7 +7,10 @@ require('dotenv').config();
 //ROUTER
 
 router.get("/", (req,res) => {
-  return res.render("signin.ejs")
+  if (req.session.isLoggedIn){
+    return res.redirect("/test");
+  }
+  return res.render("signin.ejs", {errorMessage: req.flash("successMessage")})
 })
 
 
@@ -30,9 +33,12 @@ router.post("/", async (req, res) => {
     }
 
 
-    // req.session.authenticated = true;
+    req.session.isLoggedIn = true;
+    req.session.user = {
+      id: checkuseremail.rows[0].user_id,
+      email: email
+    }
     req.flash("successMessage", "Επιτυχής Είσοδος")
-    console.log(req.flash("successMessage"));
     return res.redirect("/test");
 
 

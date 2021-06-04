@@ -8,4 +8,6 @@ const pool = new Pool({
   database: "soa_db",
 });
 
+
+
 module.exports = pool;

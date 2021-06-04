@@ -33,14 +33,51 @@ require("dotenv").config();
 //   }
 // });
 
-router.post("/", authorization, async (req, res) => {
+// router.get("/", (req,res) => {
+//     if (req.session.isLoggedIn){
+//         return res.render("home.ejs");
+//     }
+//     return res.redirect("/signin");
+// });
+
+// router.get('/', function(req, res) {
+//     console.log(req.session);
+//     req.session.isLoggedIn = false;
+//     req.session.destroy(function(err){
+//        if(err){
+//           console.log(err);
+//        }else{
+//         //    console.log(session.email);
+//         //    req.end();
+//            res.redirect('/signin');
+//        }
+//     });
+// });
+
+
+// router.post("/", authorization, async (req, res) => {
  
-    const inserttoken = await pool.query(
-                "INSERT INTO expired_tokens (token_id) VALUES ($1) RETURNING *",
-                [token]
-    )
-    res.status(200).json({Message: "Logged out successfully"});
+//     const inserttoken = await pool.query(
+//                 "INSERT INTO expired_tokens (token_id) VALUES ($1) RETURNING *",
+//                 [token]
+//     )
+//     res.status(200).json({Message: "Logged out successfully"});
     
+// });
+
+router.post('/', (req,res) => {
+    req.session.destroy((err) => {
+        if (err) throw err;
+        res.redirect('/signin');
+    });
+    // try {
+    //     req.session.destroy();
+    //     res.redirect('/signin');
+        
+    // } catch (error) {
+    //     console.log(error.message);
+    //     res.status(500).send("Server Error");
+    // }
 });
 
 module.exports = router;

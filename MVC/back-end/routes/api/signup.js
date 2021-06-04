@@ -66,23 +66,44 @@ require('dotenv').config();
 //   }
 // });
 
+router.get("/", (req,res) => {
+  if (req.session.isLoggedIn){
+    return res.redirect("/");
+  }
+  return res.render("signup.ejs", {errorMessage: req.flash("successMessage")})
+})
+
 router.post("/", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password1, password2 } = req.body;
+    console.log(req.body)
+    if (password1 !== password2){
+      req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
+      return res.redirect("/signup")
+    }
+
     const salt = await bcrypt.genSalt();
-    const sela = await Promise.all([bcrypt.hash(password, salt)]);
+    const sela = await Promise.all([bcrypt.hash(password1, salt)]);
     const newUser = await pool.query(
       "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *",
       [email, sela[0]]
     );
+
+    // console.log(newUser.rows[0].id);
+
     // res.json(newUser.rows[0]);
     //create token
-    const payload = {
-      user: newUser.rows[0].user_id
-    }
-    token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 300});
-    // console.log(token)
-    res.json({token});
+    // const payload = {
+    //   user: newUser.rows[0].user_id
+    // }
+    // token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 300});
+    // // console.log(token)
+    // res.json({token});
+
+    req.flash("successMessage", "Επιτυχής Εγγραφή")
+    return res.redirect("/signin");
+
+
   } catch (err) {
     res.status(400).json({ Message: "User with this email already exists" });
   }
