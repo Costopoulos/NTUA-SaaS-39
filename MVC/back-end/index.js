@@ -130,7 +130,7 @@ app.use((req, res, next) => {
 
 //Home
 app.get("/", (req,res) => {
-  return res.render('home.ejs');
+  return res.render('home.ejs', {successMessage: req.flash("successMessage")});
 });
 
 //Signup

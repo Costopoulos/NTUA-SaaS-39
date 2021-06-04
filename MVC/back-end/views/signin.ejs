@@ -157,7 +157,10 @@
     <script>
         $( document ).ready(function() {
            if ("<%= errorMessage %>"){
-            toastr["success"]("<%= errorMessage%>")}
+            toastr["error"]("<%= errorMessage%>")}
+            else if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
             toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -266,9 +269,9 @@ function testLocalStorageData() {
         <label>Εmail</label>
         <input type="email" class="form-control" name="email" placeholder="Email">
         
-        <label>Κωδικός</label>
+        <label>Password</label>
         <input type="password" class="form-control" name="password" placeholder="Password">
-        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Είσοδος</button>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Signin</button>
     </form></div></div>
 
     <!-- <div class="container">

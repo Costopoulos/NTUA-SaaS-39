@@ -8,9 +8,9 @@ require('dotenv').config();
 
 router.get("/", (req,res) => {
   if (req.session.isLoggedIn){
-    return res.redirect("/test");
+    return res.redirect("/");
   }
-  return res.render("signin.ejs", {errorMessage: req.flash("successMessage")})
+  return res.render("signin.ejs", {successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 })
 
 
@@ -24,7 +24,9 @@ router.post("/", async (req, res) => {
     );
 
     if (checkuseremail.rows.length === 0){ //user does not exist
-      return res.status(401).json({Message: "User with that mail does not exist"})
+      // return res.status(401).json({Message: "User with that mail does not exist"})
+      req.flash("errorMessage", "User with this email does not exist");
+      return res.redirect("/signin");
     }
 
     const checkpassword = await bcrypt.compare(password, checkuseremail.rows[0].password);
@@ -38,8 +40,8 @@ router.post("/", async (req, res) => {
       id: checkuseremail.rows[0].user_id,
       email: email
     }
-    req.flash("successMessage", "Επιτυχής Είσοδος")
-    return res.redirect("/test");
+    req.flash("successMessage", "Successful Login")
+    return res.redirect("/");
 
 
   } catch (err) {
