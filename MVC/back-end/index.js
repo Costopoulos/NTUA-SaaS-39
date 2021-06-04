@@ -142,7 +142,8 @@ app.use("/signin", require("./routes/api/signin.js"));
 //Signout
 app.use("/signout", require("./routes/api/signout.js"));
 
-
+//Create Question
+app.use("/createquestion", require("./routes/api/questionscreate.js"));
 
 app.use("/test", require("./routes/api/test.js"));
 

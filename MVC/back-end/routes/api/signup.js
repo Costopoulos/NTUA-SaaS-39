@@ -76,7 +76,7 @@ router.get("/", (req,res) => {
 router.post("/", async (req, res) => {
   try {
     const { email, password1, password2 } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
     if (password1 !== password2){
       req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
       return res.redirect("/signup")
@@ -85,7 +85,7 @@ router.post("/", async (req, res) => {
     const salt = await bcrypt.genSalt();
     const sela = await Promise.all([bcrypt.hash(password1, salt)]);
     const newUser = await pool.query(
-      "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *",
+      "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *;",
       [email, sela[0]]
     );
 
@@ -100,7 +100,7 @@ router.post("/", async (req, res) => {
     // // console.log(token)
     // res.json({token});
 
-    req.flash("successMessage", "Επιτυχής Εγγραφή")
+    req.flash("successMessage", "Successful Signup")
     return res.redirect("/signin");
 
 

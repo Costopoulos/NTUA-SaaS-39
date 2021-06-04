@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     // console.log(req.body);
     const { email, password } = req.body;
     const checkuseremail = await pool.query(
-      'SELECT * FROM soauser WHERE email = $1',
+      "SELECT * FROM soauser WHERE email = $1;",
       [email]
     );
 
@@ -31,7 +31,9 @@ router.post("/", async (req, res) => {
 
     const checkpassword = await bcrypt.compare(password, checkuseremail.rows[0].password);
     if (!checkpassword){
-      return res.status(401).json({Message: "User's email and password do not match"});
+      // return res.status(401).json({Message: "User's email and password do not match"});
+      req.flash("errorMessage", "User's email and password do not match");
+      return res.redirect("/signin");
     }
 
 
@@ -40,8 +42,12 @@ router.post("/", async (req, res) => {
       id: checkuseremail.rows[0].user_id,
       email: email
     }
-    req.flash("successMessage", "Successful Login")
-    return res.redirect("/");
+    req.session.save( () => {
+      req.flash("successMessage", "Successful Login");
+      return res.redirect("/");
+    });
+    // req.flash("successMessage", "Successful Login");
+    // return res.redirect("/");
 
 
   } catch (err) {
