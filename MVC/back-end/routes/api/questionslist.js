@@ -11,15 +11,15 @@ router.get("/", async (req,res) => {
     }
 
     const allquestions = await pool.query(
-        "SELECT * FROM questions;"
+        "SELECT question_id, questions.user_id, title, question_text, keywords, soauser.email FROM questions INNER JOIN soauser ON questions.user_id = soauser.user_id ;"
     );
 
     // const allquestions = "SELECT * FROM questions;";
-
+    
 
     console.log(allquestions);
 
-    console.log(allquestions.rows);
+    // console.log(allquestions.rows);
 
     // const sela = ['sela0', 'sela9']
 

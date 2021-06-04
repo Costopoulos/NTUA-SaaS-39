@@ -1,7 +1,9 @@
-sela
+Let's see what you will answer today <%= user.email%>!
 
 <% for (var question in questions) { %>
     <h3>Title is <%= questions[question].title %></h3>
     <p>Question is <%= questions[question].question_text %></p>
     <p>Keywords are <%= questions[question].keywords %></p>
+    <p>Asker is <%= questions[question].user_id %></p>
+    <p>Asker's email is <%= questions[question].email %></p>
 <% } %>
