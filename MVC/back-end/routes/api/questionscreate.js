@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 
         outkeys = outkeys.split(",");
 
-        console.log(`last outkeys are ${outkeys}`);
+        // console.log(`last outkeys are ${outkeys}`);
 
         // for (var key in outkeys){
         //     console.log(`key is ${outkeys[key]}`);

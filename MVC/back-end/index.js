@@ -133,6 +133,8 @@ app.get("/", (req,res) => {
   return res.render('home.ejs', {successMessage: req.flash("successMessage")});
 });
 
+///////////////// AUTH /////////////////////
+
 //Signup
 app.use("/signup", require("./routes/api/signup.js"));
 
@@ -142,8 +144,15 @@ app.use("/signin", require("./routes/api/signin.js"));
 //Signout
 app.use("/signout", require("./routes/api/signout.js"));
 
+///////////////// Questions CRUD /////////////////////
+
 //Create Question
 app.use("/createquestion", require("./routes/api/questionscreate.js"));
+
+//Read-List Question
+app.use("/listquestions", require("./routes/api/questionslist.js"));
+
+
 
 app.use("/test", require("./routes/api/test.js"));
 
