@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: "Karma", "Arial", "sans-serif";}
 * {box-sizing: border-box;}
 
 .card {
@@ -13,7 +13,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   transition: 0.3s;
   width: 1200px;
   height: 200px;
-  margin: 30px;
+  margin-bottom: 30px;
   background-color: rgba(0, 255, 255, 0.137);
   /* background-color: rgba(102, 187, 106, 0.322); */
 }
@@ -61,7 +61,7 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   padding: 20px;
 }
 </style>
@@ -80,7 +80,19 @@ input[type=submit]:hover {
 
     
     <label for="allans">Already given answers</label>
-
+    <% for (var answer in answers) { %>
+        <div class="card">
+            <div class="container" >
+                <div style="width:800px;">
+                  <p><%= answers[answer].answer_text %></p>
+              </div >
+              <div style="border-left:2px solid black;height:200px;position: relative;top: -11%;">
+                  <img src="https://eu.ui-avatars.com/api/?name=<%= answers[answer].email %>&background=0D98BA&color=FFFFFF/">
+                  <p style="margin-left: 10px"><b>Answered by: </b><%= answers[answer].email %></p>
+              </div>
+            </div>
+          </div>
+    <% } %>
 
 
     <label for="subject">Answer Text</label>

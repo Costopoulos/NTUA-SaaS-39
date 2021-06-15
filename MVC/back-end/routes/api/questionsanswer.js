@@ -19,12 +19,19 @@ router.get("/:id", async (req,res) => {
 
     // console.log(question.rows[0])
 
+    // const answers = await pool.query(
+    //     "SELECT * FROM answers WHERE question_id = $1;",
+    //     [question_id]
+    // );
+
     const answers = await pool.query(
-        "SELECT * FROM answers WHERE question_id = $1;",
+        "SELECT answer_id, answers.user_id, question_id, answer_text, soauser.email FROM answers INNER JOIN soauser ON answers.user_id = soauser.user_id WHERE question_id = $1 ORDER BY answer_id;",
         [question_id]
     );
 
-    return res.render("questionsanswer.ejs", {qid: question_id, question: question.rows[0], answers: answers, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
+    // console.log(answers.rows)
+
+    return res.render("questionsanswer.ejs", {qid: question_id, question: question.rows[0], answers: answers.rows, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 });
 
 router.post("/:id", async (req, res) => {
