@@ -22,6 +22,7 @@ CREATE TABLE questions(
     title varchar(255) not null,
     question_text text not null,
     keywords text[],
+    asked_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     -- answers text[],
     primary key(question_id),
     constraint fk_user foreign key(user_id) references soauser(user_id) on delete no action
@@ -32,6 +33,7 @@ CREATE TABLE answers(
     user_id int,
     question_id int,
     answer_text text not null,
+    answered_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     constraint fk_user foreign key(user_id) references soauser(user_id) on delete no action,
     constraint fk_question foreign key(question_id) references questions(question_id) on delete no action
 );

@@ -100,7 +100,7 @@ img {
     </div >
     <div style="border-left:2px solid black;height:200px;">
         <img src="https://eu.ui-avatars.com/api/?name=<%= questions[question].email %>&background=0D98BA&color=FFFFFF/">
-        <p style="margin-left: 10px"><b>Asked by: </b><%= questions[question].email %></p>
+        <p style="margin-left: 10px"><b>Asked by </b><%= questions[question].email %> on <%= questions[question].asken_on %></p>
         <form action="/answerquestion/<%= questions[question].question_id %>" method="GET">
             <button class="btn btn-lg btn-primary btn-block btn-signin" style="margin-left: 10px;">Answer</button>
         </form>

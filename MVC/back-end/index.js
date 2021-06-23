@@ -158,6 +158,15 @@ app.use("/listquestions", require("./routes/api/questionslist.js"));
 // })
 app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
 
+///////////////// Graphs /////////////////////
+    //Signed Out Graphs
+//Questions per Keyword
+app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
+
+//Questions per day
+app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
+
+
 
 
 app.use("/test", require("./routes/api/test.js"));
