@@ -35,7 +35,7 @@ const sessionPool = require('pg').Pool;
       saveUninitialized: true,
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
-          sameSite: true, //aameSite
+          aameSite: true, //aameSite
           secure: false // ENABLE ONLY ON HTTPS
       }};
 
