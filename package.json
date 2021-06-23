@@ -27,6 +27,7 @@
     "knex": "^0.95.6",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "nodejs": "0.0.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.6.0",
