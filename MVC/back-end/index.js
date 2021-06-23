@@ -35,7 +35,7 @@ const sessionPool = require('pg').Pool;
       saveUninitialized: true,
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
-          aameSite: true,
+          sameSite: true, //aameSite
           secure: false // ENABLE ONLY ON HTTPS
       }};
 
@@ -152,18 +152,33 @@ app.use("/createquestion", require("./routes/api/questionscreate.js"));
 //Read-List Question
 app.use("/listquestions", require("./routes/api/questionslist.js"));
 
+//Answer Question
+// app.use("/questions/:id", function(req,res){
+//   return res.render("questionsanswer.ejs", {question_id: req.params.id})
+// })
+app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
+
+///////////////// Graphs /////////////////////
+    //Signed Out Graphs
+//Questions per Keyword
+app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
+
+//Questions per day
+app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
+
+
 
 
 app.use("/test", require("./routes/api/test.js"));
 
 //Port
-// const port = process.env.PORT || 5000;
-// app.listen(port, () => {
-//   console.log(`server has started at port ${port}`);
-//   // console.log('started at port 5000');
-// });
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`server has started at port ${port}`);
+  // console.log('started at port 5000');
+});
 
-app.listen(5000, () => {
-  console.log("server started at 5000");
-})
+// app.listen(5000, () => {
+//   console.log("server started at 5000");
+// })
 

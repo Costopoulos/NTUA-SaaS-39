@@ -10,8 +10,9 @@ router.get("/", async (req,res) => {
         return res.redirect("/signin");
     }
 
+
     const allquestions = await pool.query(
-        "SELECT question_id, questions.user_id, title, question_text, keywords, soauser.email FROM questions INNER JOIN soauser ON questions.user_id = soauser.user_id ;"
+        "SELECT question_id, questions.user_id, asken_on, title, question_text, keywords, soauser.email FROM questions INNER JOIN soauser ON questions.user_id = soauser.user_id ;"
     );
 
     // const allquestions = "SELECT * FROM questions;";
