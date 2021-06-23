@@ -35,7 +35,7 @@ const sessionPool = require('pg').Pool;
       saveUninitialized: true,
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
-          aameSite: true,
+          sameSite: true, //aameSite
           secure: false // ENABLE ONLY ON HTTPS
       }};
 
@@ -172,13 +172,13 @@ app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 app.use("/test", require("./routes/api/test.js"));
 
 //Port
-// const port = process.env.PORT || 5000;
-// app.listen(port, () => {
-//   console.log(`server has started at port ${port}`);
-//   // console.log('started at port 5000');
-// });
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`server has started at port ${port}`);
+  // console.log('started at port 5000');
+});
 
-app.listen(5000, () => {
-  console.log("server started at 5000");
-})
+// app.listen(5000, () => {
+//   console.log("server started at 5000");
+// })
 
