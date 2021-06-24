@@ -21,14 +21,15 @@ const sessionPool = require('pg').Pool;
     port: 5432,
     database: "soa_db" || "d8vre040lu8r33"
   });
-  // const sessionDBaccess = new sessionPool({
-  //   user: "urpisvtgytavek",
-  //   password: "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
-  //   host: "ec2-3-212-75-25.compute-1.amazonaws.com",
-  //   port: 5432,
-  //   database: "d8vre040lu8r33"
-  // });
 
+
+  // const sessionDBaccess = new sessionPool({
+  //   user: process.env.DATABASE_NAME ,
+  //   password: "68709900" || "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
+  //   host: "localhost" || "ec2-3-212-75-25.compute-1.amazonaws.com",
+  //   port: 5432,
+  //   database: "soa_db" || "d8vre040lu8r33"
+  // });
   
     const sessionConfig = {
       store: new pgSession({
@@ -180,7 +181,7 @@ app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 app.use("/test", require("./routes/api/test.js"));
 
 //Port
-console.log(process.env.USERNAME);
+console.log(process.env.USER);
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`server has started at port ${port}`);
