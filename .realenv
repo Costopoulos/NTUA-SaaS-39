@@ -1,9 +1,9 @@
 jwtSecret = seleto
 
 SESSION_SECRET = 'sela key that will sign our seletocookie'
-DATABASE_NAME= 'public' || 'soa_db'
-DATABASE_USERNAME= 'urpisvtgytavek' || 'postgres'
-DATABASE_PASSWORD= '2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde' || '68709900'
-DATABASE_HOST= 'ec2-3-212-75-25.compute-1.amazonaws.com'
+DATABASE_NAME= 'soa_db'
+DATABASE_USERNAME= 'postgres'
+DATABASE_PASSWORD= '68709900'
+DATABASE_HOST= 'localhost'
 DATABASE_PORT= 5432
 DATABASE_URL = 'postgres://urpisvtgytavek:f2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde@ec2-3-212-75-25.compute-1.amazonaws.com:5432/d8vre040lu8r33'
