@@ -33,6 +33,9 @@ const sessionPool = require('pg').Pool;
     const sessionConfig = {
       store: new pgSession({
           pool: sessionDBaccess || process.env.DATABASE_URL,
+          ssl: {
+            rejectUnauthorized: false
+          },
           tableName: 'sessions'
       }),
       name: 'SID',
@@ -41,10 +44,13 @@ const sessionPool = require('pg').Pool;
       secret: 'aylmao work it for$me',
       resave: true, //false
       saveUninitialized: true,
+      ssl: {
+        rejectUnauthorized: false
+      },
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           aameSite: true, //aameSite
-          secure: false // ENABLE ONLY ON HTTPS
+          secure: true // ENABLE ONLY ON HTTPS
       }};
 
 // const fs = require('fs');
