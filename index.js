@@ -27,12 +27,7 @@ const sessionPool = require('pg').Pool;
     host: "ec2-3-212-75-25.compute-1.amazonaws.com",
     port: 5432,
     database: "public",
-    dialectOptions:{
-      ssl:{
-        require: true,
-        rejectUnauthorized: false
-      }
-    }
+    ssl: true
   });
 
   
