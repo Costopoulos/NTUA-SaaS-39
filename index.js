@@ -17,7 +17,7 @@ const sessionPool = require('pg').Pool;
   const sessionDBaccess = new sessionPool({
     user: "postgres",
     password: "68709900",
-    host: "localhost",
+    host: "localhost" || process.env.DATABASE_URL || "ec2-3-212-75-25.compute-1.amazonaws.com",
     port: 5432,
     database: "soa_db"
   });
