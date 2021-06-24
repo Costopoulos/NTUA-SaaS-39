@@ -30,8 +30,8 @@ const sessionPool = require('pg').Pool;
       }),
       name: 'SID',
       expire: 24 * 60 * 60 * 1000,
-      // secret: process.env.SESSION_SECRET,
-      secret: 'aylmao work it for$me',
+      secret: process.env.SESSION_SECRET,
+      // secret: 'aylmao work it for$me',
       resave: false,
       saveUninitialized: true,
       cookie: {
