@@ -32,7 +32,8 @@ const sessionPool = require('pg').Pool;
   
     const sessionConfig = {
       store: new pgSession({
-          pool: sessionDBaccess || process.env.DATABASE_URL,
+          // pool: sessionDBaccess || process.env.DATABASE_URL,
+          pool: process.env.DATABASE_URL,
           tableName: 'sessions'
       }),
       name: 'SID',
