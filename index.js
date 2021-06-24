@@ -50,7 +50,10 @@ const sessionPool = require('pg').Pool;
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           aameSite: true, //aameSite
-          secure: true // ENABLE ONLY ON HTTPS
+          secure: true, // ENABLE ONLY ON HTTPS
+          ssl: {
+            rejectUnauthorized: false
+          },
       }};
 
 // const fs = require('fs');
