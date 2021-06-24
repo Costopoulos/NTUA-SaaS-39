@@ -32,7 +32,7 @@ const sessionPool = require('pg').Pool;
       expire: 24 * 60 * 60 * 1000,
       secret: process.env.SESSION_SECRET,
       // secret: 'aylmao work it for$me',
-      resave: false,
+      resave: true, //false
       saveUninitialized: true,
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 7,
