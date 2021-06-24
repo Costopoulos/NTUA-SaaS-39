@@ -37,8 +37,8 @@ const sessionPool = require('pg').Pool;
       }),
       name: 'SID',
       expire: 24 * 60 * 60 * 1000,
-      // secret: process.env.SESSION_SECRET,
-      secret: 'aylmao work it for$me',
+      secret: process.env.SESSION_SECRET,
+      // secret: 'aylmao work it for$me',
       resave: true, //false
       saveUninitialized: true,
       cookie: {
@@ -180,7 +180,7 @@ app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 app.use("/test", require("./routes/api/test.js"));
 
 //Port
-console.log(process.env.DATABASE_URL);
+console.log(process.env.USERNAME);
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`server has started at port ${port}`);
