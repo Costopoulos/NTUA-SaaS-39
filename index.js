@@ -25,13 +25,13 @@ const sessionPool = require('pg').Pool;
   
     const sessionConfig = {
       store: new pgSession({
-          pool: sessionDBaccess,
+          pool: sessionDBaccess || process.env.DATABASE_URL,
           tableName: 'sessions'
       }),
       name: 'SID',
       expire: 24 * 60 * 60 * 1000,
-      secret: process.env.SESSION_SECRET,
-      // secret: 'aylmao work it for$me',
+      // secret: process.env.SESSION_SECRET,
+      secret: 'aylmao work it for$me',
       resave: true, //false
       saveUninitialized: true,
       cookie: {
