@@ -14,20 +14,20 @@ const sessionPool = require('pg').Pool;
 
 
 
-  // const sessionDBaccess = new sessionPool({
-  //   user: "postgres" || "urpisvtgytavek",
-  //   password: "68709900" || "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
-  //   host: "localhost" || "ec2-3-212-75-25.compute-1.amazonaws.com",
-  //   port: 5432,
-  //   database: "soa_db" || "d8vre040lu8r33"
-  // });
   const sessionDBaccess = new sessionPool({
-    user: "urpisvtgytavek",
-    password: "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
-    host: "ec2-3-212-75-25.compute-1.amazonaws.com",
+    user: "postgres" || "urpisvtgytavek",
+    password: "68709900" || "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
+    host: "localhost" || "ec2-3-212-75-25.compute-1.amazonaws.com",
     port: 5432,
-    database: "public"
+    database: "soa_db" || "d8vre040lu8r33" || "public"
   });
+  // const sessionDBaccess = new sessionPool({
+  //   user: "urpisvtgytavek",
+  //   password: "2a3abd7d2c0566e916516bb702af3c6fd6076f6249b756f7639323712a8cfde",
+  //   host: "ec2-3-212-75-25.compute-1.amazonaws.com",
+  //   port: 5432,
+  //   database: "public"
+  // });
 
   
     const sessionConfig = {
