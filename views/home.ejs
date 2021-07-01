@@ -1,280 +1,532 @@
-<html>
-    <head>
-        <title>
-            Askmeanything 39
-        </title>
-        <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<style>
-        /* body, html {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
-} */
-
-
-body,h1,h2,h3,h4,h5,h6 {
-    font-family: "Karma", sans-serif
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Me Anything</title>
+    <!-- <link rel="stylesheet" href="../styles/style.css"> -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+:root {
+    --c1: #ff5e35;
+    --c2: #c9463d;
+    --c3: #962e40;
+    --c4: #5e1742;
+    --c5: #330136;
 }
-.w3-bar-block .w3-bar-item {
-    padding:20px
-}
-#welcome{
-    font-family: "Karma", sans-serif
+@keyframes slide-in {
+    100% {
+        transform: translateX(0%);
+    }
 }
 
-a{
+@-webkit-keyframes slide-in {
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+@keyframes slide-bottom {
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@-webkit-keyframes slide-bottom {
+    100% {
+        -webkit-transform: translateY(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.questionCards::-webkit-scrollbar,
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.questionCards,body{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", Times, serif;
+}
+html,
+body {
+    overflow-x: hidden;
+}
+a {
+    color: black;
     text-decoration: none;
-    font-family: "Karma";
+}
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: var(--c1);
+}
+.sign {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-in {
+    background-color: var(--c1);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 15px;
+    transition: 0.1s;
 }
 
-button{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-}
-
-.btn.btn-signin {
-    /*background-color: #4d90fe; */
-    background-color: rgb(104, 145, 162);
-    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
-    padding: 0px;
+.sign-up {
     font-weight: 700;
-    font-size: 14px;
-    height: 36px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    color: #ff5e35;
+    opacity: 0.9;
+}
+.sign-in:hover {
+    transition: 0.1s;
+    background-color: var(--c5);
+}
+.sign-up:hover {
+    transition: 0.1s;
+    color: var(--c5);
+}
+main,
+nav {
+    padding: 30px 5%;
+}
+main h1 {
+    animation: slide-in 0.6s ease-in-out forwards;
+    transform: translateX(-100%);
+    color: var(--c2);
+}
+.qLinks {
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slide-in 0.8s ease-in-out forwards;
+    -webkit-animation: slide-in 0.8s ease-in-out forwards;
+    position: relative;
+    transform: translateX(100%);
+}
+
+.qLink {
+    background-color: var(--c1);
+    padding: 60px 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    border-radius: 30px;
+    transition: 0.2s ease-in-out;
+}
+.qLink:hover {
+    transform: scale(1.03);
+    transition: 0.2s ease-in-out;
+    box-shadow: 1px 1px 1px 2px var(--c2);
+}
+.qLink:last-child {
+    margin-right: 0;
+}
+.qLink img {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.qTitle {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.qSubtitle {
+    color: whitesmoke;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slide-bottom 0.6s ease-in-out forwards;
+    transform: translateY(100%);
+    background-color: var(--c2);
+}
+footer a {
+    background-color: var(--c2);
+    text-align: center;
+    padding: 30px 3%;
+    color: white;
+    font-size: 18px;
+    height: 100%;
+    display: block;
+    opacity: 0.95;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+footer a:hover {
+    transition: 0.2s;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.048);
+}
+#hamburgerMenu {
+    display: none;
+}
+.hamburger {
+    display: none;
+    width: 30px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 850px) {
+    .hamburger {
+        display: block;
+    }
+    .qLinks {
+        flex-direction: column;
+    }
+    .qLink {
+        margin-bottom: 50px;
+        margin-right: 0;
+    }
+    .navTitle,
+    footer a,
+    .sign-up,
+    .sign-in {
+        font-size: 14px;
+    }
+    main {
+        padding-bottom: 0;
+    }
+    footer {
+        top: 0;
+        margin-top: 100px;
+        flex-direction: column;
+        display: none;
+        animation: slide-in 0.6s ease-in-out forwards;
+        transform: translateX(-100%);
+    }
+    #hamburgerMenu:checked ~ footer {
+        display: flex;
+    }
+
+    #hamburgerMenu:checked ~ main {
+        height: calc(100vh - 100px);
+        overflow-y: hidden;
+    }
+
+    footer a {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/*********** SIGN PAGES *************/
+
+.signPage form {
+    margin: auto;
+    margin-top: 60px 80px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    background-color: var(--c1);
+    padding: 50px;
+    animation: slide-in 0.8s ease-in-out forwards;
+    -webkit-animation: slide-in 0.8s ease-in-out forwards;
+    transform: translateX(100%);
+}
+.formItem {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.formItem label {
+    color: white;
+    white-space: nowrap;
+}
+.formItem input {
+    font-size: 18px;
     border: none;
-    -o-transition: all 0.218s;
-    -moz-transition: all 0.218s;
-    -webkit-transition: all 0.218s;
-    transition: all 0.218s;
+    outline: none;
+    width: 280px;
+    height: 40px;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+.formButtons {
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+.formButtons button {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--c1);
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 25px;
+    transition: 0.1s;
+    font-weight: 500;
 }
 
-.btn {
-    font-weight: 700;
-    height: 36px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: default;
+.formButtons a {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+.formButtons button:hover {
+    transition: 0.1s;
+    background-color: #e8e8e8;
+}
+.formButtons a:hover {
+    transition: 0.1s;
+    color: #e8e8e8;
+}
+.signInPage .formButtons {
+    width: 280px;
+    margin-left: auto;
+}
+.signInPage .formButtons button {
+    margin: auto;
 }
 
-.btn.btn-signin:hover,
-.btn.btn-signin:active,
-.btn.btn-signin:focus {
-    background-color: rgb(12, 97, 33);
+.QuestionPage input,
+.QuestionPage textarea {
+    margin-left: 20px;
+    resize: none;
+    width: 370px;
+    max-height: 150px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 15px;
 }
-</style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-    crossorigin="anonymous">
-</script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    </head>
-    <body>
-        <script>
-            $( document ).ready(function() {
- 
-                if ("<%= successMessage %>"){
-                    toastr["success"]("<%= successMessage %>")
-                }
-                toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "3000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-            });
-            </script>
-        <!-- <p>
-            Sela
-        </p> -->
 
-        <!-- Sidebar (hidden by default) -->
-<!-- <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()"
-    class="w3-bar-item w3-button">Close Menu</a>
-    <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-  </nav> -->
-  
-  <!-- Top menu -->
-  <div class="w3-top">
-    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-      <!-- <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div> -->
-      <div class="w3-right w3-padding-16">
-        <% if (isAuthenticated){ %>  
-            <!-- <div id="welcome"><p> Welcome <%= user.email %> </p></div> -->
-            <form action="/signout" method="POST">
-                <!-- <button class="btn btn-lg btn-primary btn-block btn-signin"> -->
-                <button style=font-size:medium>
-                    Signout
-                </button>
-            </form>
-        <% } else { %>
-            <a href="/signin" style=font-size:medium>Signin</a>
-            <!-- <medium>/</medium> -->
-            <small>/</small>
-            <a href="/signup" style=font-size:medium>Signup</a>
-        <% } %>
-        </div>
-      <div class="w3-center w3-padding-16">Askmeanything-39</div>
-    </div>
-  </div>
-    
-  <!-- !PAGE CONTENT! -->
-  <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-  
-    <!-- First Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-      <div class="w3-quarter">
-        <a href="/statisticsperkeyword"><img src="https://thumbs.dreamstime.com/b/keyword-research-filled-outline-icon-seo-keyword-research-filled-outline-icon-seo-development-magnifier-sign-vector-graphics-102529057.jpg" alt="Questions per Keyword" style="width:100%"></a>
-        <h3>Questions Per Keyword</h3>
-        <p>Questions per keywords' statistics</p>
-      </div>
-      <div class="w3-quarter">
-        <!-- <img src="../utils/drupal-module-calendar.jpg" alt="Questions per Period" style="width:100%"> -->
-        <a href="/statisticsperperiod"><img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v394-filmful-35-planningelement_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=d904856a255917f219422fd8d1305fbb" alt="Questions per Period" style="width:100%"></a>
-        <h3>Questions Per Period</h3>
-        <p>Questions per period of time's statistics</p>
-      </div>
-      <div class="w3-quarter">
-        <a href="/createquestion"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmHyF0Fe-nRUJ_Qx8rk0gRQBydXdr8jw5mfQ&usqp=CAU" alt="Ask a question" style="width:100%"></a>
-        <h3>Ask a New Question</h3>
-        <p>Ask me anything you like!</p>
-      </div>
-      <div class="w3-quarter">
-        <a href="/listquestions"><img src="https://thumbs.dreamstime.com/b/sketch-light-bulb-doodle-art-style-vector-illustration-design-element-your-stickers-card-posters-emblems-web-design-80696296.jpg" alt="Answer a question" style="width:100%"></a>
-        <h3>Answer a Question</h3>
-        <p>Browse and answer existing questions</p>
-      </div>
-    </div>
-    
-    <!-- Second Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
-      <div class="w3-quarter">
-        <img src="/w3images/popsicle.jpg" alt="Popsicle" style="width:100%">
-        <h3>All I Need Is a Popsicle</h3>
-        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="w3-quarter">
-        <img src="/w3images/salmon.jpg" alt="Salmon" style="width:100%">
-        <h3>Salmon For Your Skin</h3>
-        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="w3-quarter">
-        <img src="/w3images/sandwich.jpg" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich, A Real Classic</h3>
-        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="w3-quarter">
-        <img src="/w3images/croissant.jpg" alt="Croissant" style="width:100%">
-        <h3>Le French</h3>
-        <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-    </div>
-  
-    <!-- Pagination -->
-    <div class="w3-center w3-padding-32">
-      <div class="w3-bar">
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-      </div>
-    </div>
-    
-    <hr id="about">
-  
-    <!-- About Section -->
-    <div class="w3-container w3-padding-32 w3-center">  
-      <h3>About Me, The Food Man</h3><br>
-      <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533">
-      <div class="w3-padding-32">
-        <h4><b>I am Who I Am!</b></h4>
-        <h6><i>With Passion For Real, Good Food</i></h6>
-        <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <hr>
-    
-    <!-- Footer -->
-    <footer class="w3-row-padding w3-padding-32">
-      <div class="w3-third">
-        <h3>FOOTER</h3>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-        <!-- <a href="/about">About</a>
-        <a href="/contact">Contact us</a>
-        <a href="https://github.com/Costopoulos/NTUA-SaaS-39/tree/documentation">Docs</a>
-        <a href="https://github.com/Costopoulos/NTUA-SaaS-39">Github</a>
-        <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34">Course Material</a> -->
-      </div>
-  
-      <div class="w3-third">
-        <h3>BLOG POSTS</h3>
-        <ul class="w3-ul w3-hoverable">
-          <li class="w3-padding-16">
-            <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
-            <span class="w3-large">Lorem</span><br>
-            <span>Sed mattis nunc</span>
-          </li>
-          <li class="w3-padding-16">
-            <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
-            <span class="w3-large">Ipsum</span><br>
-            <span>Praes tinci sed</span>
-          </li> 
-        </ul>
-      </div>
-  
-      <div class="w3-third w3-serif">
-        <h3>POPULAR TAGS</h3>
-        <p>
-          <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dinner</span>
-          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Salmon</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">France</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Drinks</span>
-          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Flavors</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cuisine</span>
-          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Chicken</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dressing</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fried</span>
-          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
+@media only screen and (max-width: 850px) {
+    .signPage form {
+        width: 95%;
+        margin: 30px auto;
+    }
+
+    .formItem {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 14px;
+    }
+    .formItem input {
+        margin-left: 0;
+        width: max-content;
+        height: 40px;
+        margin-top: 5px;
+    }
+    .formButtons {
+        width: max-content !important;
+        margin: auto !important;
+        align-items: center !important;
+        flex-direction: row !important;
+    }
+    .QuestionPage textarea {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .formButtons button,
+    .formButtons a {
+        font-size: 14px;
+    }
+}
+
+.listPage h1 {
+    font-weight: 400;
+}
+
+.questionCards {
+    width: 55%;
+    margin: 70px auto 0;
+    animation: slide-in 0.8s ease-in-out forwards;
+    -webkit-animation: slide-in 0.8s ease-in-out forwards;
+    transform: translateX(100%);
+}
+
+.questionCard {
+    border: 1px solid var(--c1);
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+}
+.questionCard:hover {
+    transform: scale(1.01);
+    transition: 0.1s ease-in-out;
+    box-shadow: 1px 1px 1px 1px var(--c1);
+}
+.cardWho,
+.cardBottom {
+    display: flex;
+}
+.cardWho {
+    opacity: 0.95;
+    color: var(--c3);
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+.who-img {
+    margin-right: 20px;
+    border-radius: 5px;
+    width: 50px;
+}
+
+.cardBottom {
+    justify-content: space-between;
+    align-items: center;
+}
+.cardBottom a {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: var(--c1);
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+    transition: 0.1s;
+    font-weight: 500;
+}
+
+.cardBottom a:hover {
+    transition: 0.1s;
+    color: #e8e8e8;
+}
+.cardTitle {
+    margin-bottom: 30px;
+    font-style: 28px;
+    color: var(--c3);
+}
+.cardText {
+    color: var(--c3);
+    text-indent: 40px;
+    line-height: 22px;
+    font-style: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.cardKeywords {
+    color: var(--c3);
+}
+
+@media only screen and (max-width: 850px) {
+    .questionCards {
+        width: 97%;
+    }
+    .questionCard {
+        padding: 25px 14px;
+        margin-bottom: 40px;
+    }
+    .cardText {
+        font-size: 16px;
+    }
+    .who-img {
+        margin-right: 15px;
+    }
+    .whoText {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
+       
+     <label for="hamburgerMenu">   <img class="hamburger" src="../media/img/bars-solid.svg" alt=""></label>
+        <p class="navTitle">
+            Askmeanything-39
         </p>
-      </div> 
-    </footer>
-  
-  <!-- End page content -->
-  </div>
-
-        <form action="/signout" method="POST">
-            <button>
-                Signout
-            </button>
-        </form>
-        <script>
-            // Script to open and close sidebar
-            function w3_open() {
-              document.getElementById("mySidebar").style.display = "block";
-            }
-             
-            function w3_close() {
-              document.getElementById("mySidebar").style.display = "none";
-            }
-            </script>
-    </body>
+        <div class="sign">
+            <a href="sign-in.html" class="sign-in">SIGN IN</a>
+            <a href="sign-up.html" class="sign-up">SIGN UP</a>
+        </div>
+    </nav>
+<main class="homePage">
+    <h1>
+        Welcome To AskMeAnything
+    </h1>
+    <div class="qLinks">
+<a class="qLink" href="">
+    <img src="../media/img/search.svg" alt="">
+    <p class="qTitle">Questions Per Keyword</p>
+    <p class="qSubtitle">Questions per keywords' statistics</p>
+</a>
+<a class="qLink" href="">
+    <img src="../media/img/calendar.svg" alt="">
+    <p class="qTitle">Questions Per Period</p>
+    <p class="qSubtitle">Questions per period of time's statistics</p>
+</a>
+<a class="qLink" href="ask-question.html">
+    <img src="../media/img/conversation.svg" alt="">
+    <p class="qTitle">Ask a New Question</p>
+    <p class="qSubtitle">Ask me anything you like!</p>
+</a>
+<a class="qLink" href="listquestions.html">
+    <img src="../media/img/light-bulb.svg" alt="">
+    <p class="qTitle">Answer a Question</p>
+    <p class="qSubtitle">Browse and answer existing questions</p>
+</a>
+    </div>
+</main>
+<footer>
+    <a href="" class="footerLink">About</a>
+    <a href="" class="footerLink">Contact Us</a>
+    <a href="" class="footerLink">Project Documentation</a>
+    <a href="" class="footerLink">Link On Github</a>
+    <a href="" class="footerLink">Course Materials</a>
+</footer>
+    <script src="../media/scripts/script.js"></script>
+</body>
 </html>
