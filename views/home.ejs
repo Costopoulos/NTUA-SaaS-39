@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Me Anything</title>
     <!-- <link rel="stylesheet" href="../styles/style.css"> -->
-    <style>
+    <script>
+        function peruse(){
+         D=document.getElementById("E")
+         SVGDoc=D.getSVGDocument()
+          SVGRoot=SVGDoc.documentElement
+         who=SVGRoot.firstChild.nextSibling
+         whoName="<"+who.nodeName
+          whoHow=who.attributes.item(0)
+          whoNow=whoHow.nodeName
+         whoWhat=whoHow.nodeValue+">"
+          alert(whoName+" "+whoNow+"="+whoWhat)
+        }
+    <style></script>
         @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 :root {
     --c1: #ff5e35;
@@ -483,8 +495,8 @@ footer a:hover {
 <body>
     <input type="checkbox" id="hamburgerMenu">
     <nav>
-       
-     <label for="hamburgerMenu">   <embed class="hamburger" src="bars-solid.svg" alt=""></label>
+        <button onclick="peruse()">open</button><br>
+     <label for="hamburgerMenu">   <embed id="E" name="E" class="hamburger" src="bars-solid.svg" alt=""></label>
         <p class="navTitle">
             Askmeanything-39
         </p>
