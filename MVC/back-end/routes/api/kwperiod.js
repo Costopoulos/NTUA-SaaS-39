@@ -13,6 +13,9 @@ router.get("/", async (req,res) => {
         "SELECT title, count(*) FROM questions WHERE asken_on >= NOW() - interval '1 week' GROUP BY title LIMIT 5;"
     )
 
+    console.log(graph);
+
+    console.log(graph.rows.length);
 
     return res.render("kwperiod.ejs", {keywords: graph.rows, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 });
