@@ -166,6 +166,10 @@ app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 //Questions per day
 app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
+    //Signed in Graphs
+//Profile
+// app.use("/profile", require('./routes/api/profile.js'))
+
 
 
 
