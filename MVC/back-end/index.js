@@ -14,6 +14,7 @@ const sessionPool = require('pg').Pool;
 
 
 
+
   const sessionDBaccess = new sessionPool({
     user: "postgres",
     password: "68709900",
@@ -172,6 +173,9 @@ app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
 
 
+
+//Static files
+app.use('/static', express.static('media'));
 
 app.use("/test", require("./routes/api/test.js"));
 
