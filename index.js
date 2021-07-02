@@ -177,7 +177,8 @@ app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
 
-
+//Static files
+app.use('/static', express.static('media'));
 
 app.use("/test", require("./routes/api/test.js"));
 
