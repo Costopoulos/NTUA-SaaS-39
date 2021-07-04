@@ -1,107 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<style>
-body {font-family: "Karma", "Arial", "sans-serif";}
-* {box-sizing: border-box;}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 1200px;
-  height: 200px;
-  margin-bottom: 30px;
-  background-color: rgba(0, 255, 255, 0.137);
-  /* background-color: rgba(102, 187, 106, 0.322); */
-}
-
-img {
-  border-radius: 5px 5px 5px 5px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.container {
-  display:flex;
-  padding: 2px 16px;
-  height: 100%;
-  border: 0 0 2px 2px solid black;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px;
-}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-.container {
-  border-radius: 5px;
-  /* background-color: #f2f2f2; */
-  padding: 20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
 </head>
+
 <body>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
 
-<h3>Answer a Question</h3>
-<div class="container">
-  <form action="/answerquestion/<%= qid %>" method="POST">
-    <label for="fname">Title</label>
-    <input type="text" id="fname" name="title" value="<%= question.title %>" readonly>
-
-
-    <label for="lname">Keywords</label>
-    <input type="text" id="lname" name="keywords" value="<%=question.keywords%>" readonly>
-
-    
-    <label for="allans">Already given answers</label>
-    <% for (var answer in answers) { %>
-        <div class="card">
-            <div class="container" >
-                <div style="width:800px;">
-                  <p><%= answers[answer].answer_text %></p>
-              </div >
-              <div style="border-left:2px solid black;height:200px;position: relative;top: -11%;">
-                  <img src="https://eu.ui-avatars.com/api/?name=<%= answers[answer].email %>&background=0D98BA&color=FFFFFF/">
-                  <p style="margin-left: 10px"><b>Answered by </b><%= answers[answer].email %> on <%= answers[answer].answered_on %></p>
-              </div>
+        <label for="hamburgerMenu"> <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
+        <p class="navTitle">
+            Askmeanything-39
+        </p>
+        <div class="sign">
+            <a href="/signin" class="sign-in">SIGN IN</a>
+            <a href="/signup" class="sign-up">SIGN UP</a>
+        </div>
+    </nav>
+    <main class="signPage QuestionPage">
+        <h1>
+            Ask a Question
+        </h1>
+        <form action="/answerquestion/<%= qid %>" method="POST">
+            <div class="formItem">
+                <label for="fname">Question Title:</label>
+                <input type="text" id="fname" name="title" value="<%= question.title %>" readonly>
             </div>
-          </div>
-    <% } %>
+
+            <div class="formItem">
+                <label for="keyWords">Keywords:</label>
+                <input type="text" id="lname" name="keywords" value="<%=question.keywords%>" readonly>
+            </div>
+            <div class="formItem" style="justify-content: left;">
+            <label for="allans">Already given answers:</label></div>
+            <% for (var answer in answers) { %>
+                <div class="formItem">
+                    <div class="questionCards" style="margin: 0px auto 0; border: 1px solid white; border-radius: 15px;">
+                        <div class="questionCard2" style="padding: 10px;" >
+                            <p style="color: #962e40; line-height: 22px; font-style: 18px;font-weight: 500;margin-bottom: 20px;"><%= answers[answer].answer_text %></p>
+                            <div class="cardWho">
+                                <img src="https://eu.ui-avatars.com/api/?name=<%= answers[answer].email %>&background=962e40&color=ffffff" alt="" class="who-img">
+                                <p class="whoText"><b>Answered by </b><%= answers[answer].email %> <br> on <%= answers[answer].answered_on %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
 
 
-    <label for="subject">Answer Text</label>
-    <textarea id="subject" name="text" style="height:200px"></textarea>
+            <div class="formItem">
+                <label for="subject">Answer Text:</label>
+                <textarea id="subject" cols="30" rows="10" name="text"></textarea>
+            </div>
+            
+            <div class="formItem formButtons">
+                <button type="submit">SUBMIT</button>
+                <a href="/">CANCEL</a>
+             </div>
+        </form>
 
-    
-    <input type="submit" value="Submit">
-  </form>
-</div>
-
+    </main>
+    <footer>
+        <a href="https://github.com/Costopoulos" class="footerLink">About</a>
+        <a href="https://github.com/Tsaousis" class="footerLink">Contact Us</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Project Documentation</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+        <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
+    </footer>
+    <script src="/static/scripts/script.js"></script>
 </body>
+
 </html>
