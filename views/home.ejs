@@ -16,10 +16,26 @@
         <p class="navTitle">
             Askmeanything-39
         </p>
-        <div class="sign">
-            <a href="/signin" class="sign-in">SIGN IN</a>
-            <a href="/signup" class="sign-up">SIGN UP</a>
-        </div>
+        <% if (isAuthenticated){ %>
+            <div class="sign">
+                <form action="/signout" method="POST" class="sign">
+                    <button class="sign-up" style="background-color: Transparent;
+                    background-repeat:no-repeat;
+                    border: none;
+                    cursor:pointer;
+                    overflow: hidden;
+                    outline:none;
+                    font-size: medium;">
+                        SIGN OUT
+                    </button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="sign">
+                <a href="/signin" class="sign-in">SIGN IN</a>
+                <a href="/signup" class="sign-up">SIGN UP</a>
+            </div>
+        <% } %>
     </nav>
 <main class="homePage">
     <h1>
