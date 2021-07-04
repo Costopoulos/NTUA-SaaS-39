@@ -6,9 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Me Anything</title>
     <link rel="stylesheet" href="/static/styles/style.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
+    <script>
+        $( document ).ready(function() {
+
+            if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
+            toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        });
+        </script>
     <input type="checkbox" id="hamburgerMenu">
     <nav>
 
