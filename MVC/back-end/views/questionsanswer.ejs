@@ -14,13 +14,10 @@
     <nav>
 
         <label for="hamburgerMenu"> <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
-        <p class="navTitle">
-            Askmeanything-39
-        </p>
+        <a href="/" class="navTitle">Askmeanything-39</a>
         <div class="sign">
-            <a href="/signin" class="sign-in">SIGN IN</a>
-            <a href="/signup" class="sign-up">SIGN UP</a>
-        </div>
+          <p class="sign-up"><%= user.email %></p>
+      </div>
     </nav>
     <main class="signPage QuestionPage">
         <h1>
