@@ -41,16 +41,10 @@
     <nav>
 
      <label for="hamburgerMenu">   <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
-        <!-- <p class="navTitle">
-            Askmeanything-39
-        </p> -->
         <a href="/" class="navTitle">Askmeanything-39</a>
         <% if (isAuthenticated){ %>
-            <!-- <div class="sign">
-                <a href="/signout" class="sign-up">SIGN OUT</a>
-            </div> -->
             <div class="sign">
-                <a href="/dashboard" class="sign-in">DASHBOARD</a>
+                <a href="/" class="sign-in">HOME</a>
                 <form action="/signout" method="POST" class="sign">
                     <button class="sign-up" style="background-color: Transparent;
                     background-repeat:no-repeat;
@@ -72,10 +66,10 @@
     </nav>
 <main class="homePage">
     <h1>
-        Welcome To AskMeAnything
+        My.Askmeanything <%= user.email %>
     </h1>
     <div class="qLinks">
-<a class="qLink" href="/statisticsperkeyword">
+<!-- <a class="qLink" href="/statisticsperkeyword">
     <img src="/static/img/search.svg" alt="">
     <p class="qTitle">Questions Per Keyword</p>
     <p class="qSubtitle">Questions per keywords' statistics</p>
@@ -84,6 +78,16 @@
     <img src="/static/img/calendar.svg" alt="">
     <p class="qTitle">Questions Per Period</p>
     <p class="qSubtitle">Questions per period of time's statistics</p>
+</a> -->
+<a class="qLink">
+    <img src="/static/img/search.svg" alt="">
+    <p class="qTitle">My Questions: <%= questionscount %></p>
+    <p class="qTitle">My Answers: <%= answerscount %></p>
+</a>
+<a class="qLink">
+    <img src="/static/img/calendar.svg" alt="">
+    <p class="qTitle">My Questions Today: <%= questionscounttoday %></p>
+    <p class="qTitle">My Answers Today: <%= answerscounttoday %></p>
 </a>
 <a class="qLink" href="/createquestion">
     <img src="/static/img/conversation.svg" alt="">
@@ -98,12 +102,12 @@
     </div>
 </main>
 <footer>
-    <a href="" class="footerLink">About</a>
-    <a href="" class="footerLink">Contact Us</a>
-    <a href="" class="footerLink">Project Documentation</a>
-    <a href="" class="footerLink">Link On Github</a>
-    <a href="" class="footerLink">Course Materials</a>
+    <a href="https://github.com/Costopoulos" class="footerLink">About</a>
+    <a href="https://github.com/Tsaousis" class="footerLink">Contact Us</a>
+    <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Project Documentation</a>
+    <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+    <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
 </footer>
-    <script src="/static/scripts/script.js"></script>
+<script src="/static/scripts/script.js"></script>
 </body>
 </html>
