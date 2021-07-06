@@ -32,8 +32,6 @@ router.get("/", async (req,res) => {
         "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '1 week' and asken_on <= NOW() - interval '6 days';"
     )
 
-    console.log(day1.rows[0].count);
-
     return res.render("kwperiod.ejs", {day1: day1.rows, day2: day2.rows,day3: day3.rows,day4: day4.rows,day5: day5.rows,day6: day6.rows,day7: day7.rows, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 });
 

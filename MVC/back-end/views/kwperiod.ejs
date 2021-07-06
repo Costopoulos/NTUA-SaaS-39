@@ -47,15 +47,75 @@
         Chart.defaults.global.defaultFontFamily = 'Lato';
         Chart.defaults.global.defaultFontSize = 18;
         Chart.defaults.global.defaultFontColor = '#777';
+        let ts = Date.now();
+        let date_ob = new Date(ts);
+        let date = date_ob.getDate();
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date1 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date2 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date3 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date4 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date5 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        // let date6 = date_ob.getDate();
+
+        // ts=ts-86400
+        // let date_ob = new Date(ts);
+
+        let month = date_ob.getMonth() + 1;
+        let year = date_ob.getFullYear();
+
+        let date1 = date-1;
+        let date2 = date-2;
+        let date3 = date-3;
+        let date4 = date-4;
+        let date5 = date-5;
+        let date6 = date-6;
+
+        // var today = new Date();
+        // var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
         
+        // var d = new Date();
+        // let yes=d.setDate(d.getDate()-1);
+
+        function newDate(days){
+            return moment().add(days,'d');
+        }
+
 
         let kwChartWithStuff = new Chart(kwChart, {
             type: 'bar',//line
             data: {
-                labels: ['30/06', '01/07', '02/07', '03/07', '04/07', '05/07', '06/07'],
+                // labels: [`${date-6}/${month}`, `${date-5}/${month}`, `${date-4}/${month}`, `${date-3}/${month}`, `${date-2}/${month}`, `${date-1}/${month}`, `${yes}`],
+                labels: [`${date6}/${month}`,`${date5}/${month}`,`${date4}/${month}`,`${date3}/${month}`,`${date2}/${month}`,`${date1}/${month}`,`${date}/${month}`],
+                // labels: [`${date6}`,`${date5}`,`${date4}`,`${date3}`,`${date2}`,`${date1}`,`${date}`,],
+                // labels:[newDate(-6),newDate(-5),newDate(-4),newDate(-3),newDate(-2),newDate(-1),newDate(0)],
+                // labels: [newDate(-4), newDate(-3), newDate(2), newDate(3), newDate(4), newDate(5), newDate(6)],
                 datasets: [{
                     label: 'Most Used Keywords',
                     data:['<%= day1[0].count %>','<%= day2[0].count %>','<%= day3[0].count %>','<%= day4[0].count %>','<%= day5[0].count %>','<%= day6[0].count %>','<%= day7[0].count %>',],
+                    // data:[1, 3, 4, 2, 1, 4, 2],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -92,7 +152,23 @@
                             beginAtZero: true,
                             stepSize: 1
                         }
-                    }]
+                    }],
+                    // xAxes: [{
+                    //     type:'time',
+                    //     time:{
+                    //         displayFormats:{
+                    //             'millisecond': 'MMM DD',
+                    //             'second': 'MMM DD',
+                    //             'minute': 'MMM DD',
+                    //             'hour': 'MMM DD',
+                    //             'day': 'MMM DD',
+                    //             'week': 'MMM DD',
+                    //             'month': 'MMM DD',
+                    //             'quarter': 'MMM DD',
+                    //             'year': 'MMM DD',
+                    //         }
+                    //     }
+                    // }]
                 },
                 // elements: {
                 //     line: {
