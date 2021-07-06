@@ -52,17 +52,18 @@
         let kwChartWithStuff = new Chart(kwChart, {
             type: 'bar',//line
             data: {
-                labels: ['<%= keywords[0].title %>', '<%= keywords[1].title %>', '<%= keywords[2].title %>', '<%= keywords[3].title %>', '<%= keywords[4].title %>'],
+                labels: ['30/06', '01/07', '02/07', '03/07', '04/07', '05/07', '06/07'],
                 datasets: [{
                     label: 'Most Used Keywords',
-                    data:['<%= keywords[0].count %>', '<%= keywords[1].count %>', '<%= keywords[2].count %>', '<%= keywords[3].count %>', '<%= keywords[4].count %>'],
+                    data:['<%= day1[0].count %>','<%= day2[0].count %>','<%= day3[0].count %>','<%= day4[0].count %>','<%= day5[0].count %>','<%= day6[0].count %>','<%= day7[0].count %>',],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
-                        // 'rgba(255, 159, 64, 0.2)'
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(129, 249, 64, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
@@ -70,7 +71,8 @@
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
-                        // 'rgba(255, 159, 64, 1)'
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(129, 249, 64, 0.2)',
                     ],
 
                 }]
@@ -78,7 +80,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Most Asked Questions Last Week',
+                    text: "Number of questions per last week's days",
                     fontSize: 25
                 },
                 legend: {
@@ -91,7 +93,12 @@
                             stepSize: 1
                         }
                     }]
-                }
+                },
+                // elements: {
+                //     line: {
+                //         tension: 0
+                //     }
+                // }
             }
         });
     </script>
