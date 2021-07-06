@@ -46,15 +46,29 @@
         Chart.defaults.global.defaultFontFamily = 'Lato';
         Chart.defaults.global.defaultFontSize = 18;
         Chart.defaults.global.defaultFontColor = '#777';
-        
+        let ts = Date.now();
+        let date_ob = new Date(ts);
+        let date = date_ob.getDate();
+
+        let month = date_ob.getMonth() + 1;
+        let year = date_ob.getFullYear();
+
+        let date1 = date-1;
+        let date2 = date-2;
+        let date3 = date-3;
+        let date4 = date-4;
+        let date5 = date-5;
+        let date6 = date-6;
 
         let kwChartWithStuff = new Chart(kwChart, {
             type: 'bar',//line
             data: {
-                labels: ['<%= keywords[0].title %>', '<%= keywords[1].title %>', '<%= keywords[2].title %>', '<%= keywords[3].title %>', '<%= keywords[4].title %>'],
+                // labels: ['<%= keywords[0].title %>', '<%= keywords[1].title %>', '<%= keywords[2].title %>', '<%= keywords[3].title %>', '<%= keywords[4].title %>'],
+                labels: [`${date6}/${month}`,`${date5}/${month}`,`${date4}/${month}`,`${date3}/${month}`,`${date2}/${month}`,`${date1}/${month}`,`${date}/${month}`],
                 datasets: [{
                     label: 'Most Used Keywords',
-                    data:['<%= keywords[0].count %>', '<%= keywords[1].count %>', '<%= keywords[2].count %>', '<%= keywords[3].count %>', '<%= keywords[4].count %>'],
+                    // data:['<%= keywords[0].count %>', '<%= keywords[1].count %>', '<%= keywords[2].count %>', '<%= keywords[3].count %>', '<%= keywords[4].count %>'],
+                    data:['<%= day1[0].count %>','<%= day2[0].count %>','<%= day3[0].count %>','<%= day4[0].count %>','<%= day5[0].count %>','<%= day6[0].count %>','<%= day7[0].count %>',],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
