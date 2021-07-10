@@ -17,7 +17,7 @@ app.use("/signup", require("./routes/api/signup.js"));
 app.use("/signin", require("./routes/api/signin.js"));
 
 //Signout
-// app.use("/signout", require("./routes/api/signout.js"));
+app.use("/signout", require("./routes/api/signout.js"));
 
 //Port
 const port = process.env.PORT || 5000;
