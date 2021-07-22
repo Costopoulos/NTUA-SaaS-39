@@ -40,12 +40,12 @@ router.post("/:id", async (req, res) => {
 
         // console.log(answertext)
 
+        const questionid = req.params.id;
+
         if (answertext.length === 0){
             req.flash("errorMessage", "Give an answer!");
             return res.redirect(`/answerquestion/${questionid}`);
         }
-
-        const questionid = req.params.id;
 
         const user_id = req.session.user.id;
 
