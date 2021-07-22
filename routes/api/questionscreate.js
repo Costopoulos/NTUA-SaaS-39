@@ -18,7 +18,8 @@ router.post("/", async (req, res) => {
         const {title, text, keywords} = req.body;
 
         if (title.length === 0 || text.length === 0 || keywords.length === 0){
-            return req.flash("errorMessage", "Fill all fields!");
+            req.flash("errorMessage", "Fill all fields!");
+            return res.redirect("/createquestion");
         }
 
         // console.log(`keywords are ${keywords}`);
