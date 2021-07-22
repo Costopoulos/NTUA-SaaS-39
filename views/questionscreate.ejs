@@ -10,6 +10,30 @@
 </head>
 
 <body>
+    <script>
+        $( document ).ready(function() {
+           if ("<%= errorMessage %>"){
+            toastr["error"]("<%= errorMessage%>")}
+            else if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
+            toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        });
+    </script>
     <input type="checkbox" id="hamburgerMenu">
     <nav>
 
