@@ -17,6 +17,10 @@ router.post("/", async (req, res) => {
     try {
         const {title, text, keywords} = req.body;
 
+        if (title.length === 0 || text.length === 0 || keywords.length === 0){
+            return req.flash("errorMessage", "Fill all fields!");
+        }
+
         // console.log(`keywords are ${keywords}`);
         // console.log(`keywords type are ${typeof(keywords)}`);
 
