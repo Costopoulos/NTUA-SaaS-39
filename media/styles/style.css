@@ -395,6 +395,17 @@ footer a:hover {
     transition: 0.1s ease-in-out;
     box-shadow: 1px 1px 1px 1px var(--c1);
 }
+.questionCard2 {
+    border: 1px solid var(--c1);
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+}
+.questionCard2:hover {
+    transform: scale(1.01);
+    transition: 0.1s ease-in-out;
+    box-shadow: 1px 1px 1px 1px var(--c1);
+}
 .cardWho,
 .cardBottom {
     display: flex;
@@ -466,5 +477,9 @@ footer a:hover {
     }
     .whoText {
         font-size: 14px;
+    }
+    .questionCard2 {
+        padding: 25px 14px;
+        margin-bottom: 40px;
     }
 }

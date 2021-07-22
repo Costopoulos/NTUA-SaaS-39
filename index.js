@@ -176,6 +176,8 @@ app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 //Questions per day
 app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
+//Dashboard
+app.use("/dashboard", require('./routes/api/profile.js'))
 
 //Static files
 app.use('/static', express.static('media'));
