@@ -12,10 +12,8 @@
 <body>
     <script>
         $( document ).ready(function() {
-           if ("<%= errorMessage %>"){
-            toastr["error"]("<%= errorMessage%>")}
-            else if ("<%= successMessage %>"){
-                toastr["success"]("<%= successMessage %>")
+            if ("<%= errorMessage %>"){
+               toastr["error"]("<%= errorMessage%>")
             }
             toastr.options = {
             "closeButton": false,
