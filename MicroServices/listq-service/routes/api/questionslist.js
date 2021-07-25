@@ -11,7 +11,7 @@ router.get("/", async (req,res) => {
 
         console.log(allquestions);
 
-        console.log(json(allquestions));
+        console.log(res.json(allquestions));
         
         return res.json(allquestions)
 
