@@ -3,6 +3,7 @@ CREATE DATABASE createq_mss;
 CREATE TABLE questions(
     question_id int generated always as identity,
     user_id int,
+    user_email varchar(255),
     title varchar(255) not null,
     question_text text not null,
     keywords text[],
