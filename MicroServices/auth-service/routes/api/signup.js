@@ -23,10 +23,10 @@ router.post("/", async (req, res) => {
       [email, sela[0]]
     );
 
-    res.json({Message: "Successfully signed up"})
+    return res.json({Message: "Successfully signed up"})
 
   } catch (err) {
-    res.status(400).json({ Message: "User with this email already exists" });
+    return res.status(400).json({ Message: "User with this email already exists" });
   }
 });
 

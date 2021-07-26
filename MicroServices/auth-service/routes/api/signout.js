@@ -11,7 +11,7 @@ router.post("/", authorization, async (req, res) => {
         "INSERT INTO expired_tokens (token_id) VALUES ($1) RETURNING *",
         [token]
     )
-    res.status(200).json({Message: "Successfully logged out"});
+    return res.status(200).json({Message: "Successfully logged out"});
 });
 
 module.exports = router;

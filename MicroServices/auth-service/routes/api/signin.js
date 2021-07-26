@@ -33,13 +33,13 @@ router.post("/", async (req, res) => {
       email: checkuseremail.rows[0].email
     }
     token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600});
-    res.json({token});
+    return res.json({token});
 
 
   } catch (err) {
     // res.status(401).json({ Message: "User with that mail does not exist" });
     console.error(err.message);
-    res.status(500).send("Server Error");
+    return res.status(500).send("Server Error");
   }
 });
 
