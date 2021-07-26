@@ -9,11 +9,11 @@ router.get("/", async (req,res) => {
             "SELECT * FROM questions;"
         );
 
-        console.log(allquestions);
+        // console.log(allquestions.rows);
 
-        console.log(res.json(allquestions));
-        
-        return res.json(allquestions)
+        // console.log(res.json(allquestions));
+  
+        return res.json(allquestions.rows)
 
     } catch (error) {
         console.log(error.message);
