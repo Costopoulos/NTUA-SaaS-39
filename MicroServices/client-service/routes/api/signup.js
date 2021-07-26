@@ -75,30 +75,20 @@ router.get("/", (req,res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { email, password1, password2 } = req.body;
-    // console.log(req.body)
-    if (password1 !== password2){
-      req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
-      return res.redirect("/signup")
-    }
-
-    const salt = await bcrypt.genSalt();
-    const sela = await Promise.all([bcrypt.hash(password1, salt)]);
-    const newUser = await pool.query(
-      "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *;",
-      [email, sela[0]]
-    );
-
-    // console.log(newUser.rows[0].id);
-
-    // res.json(newUser.rows[0]);
-    //create token
-    // const payload = {
-    //   user: newUser.rows[0].user_id
+    // const { email, password1, password2 } = req.body;
+    // // console.log(req.body)
+    // if (password1 !== password2){
+    //   req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
+    //   return res.redirect("/signup")
     // }
-    // token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 300});
-    // // console.log(token)
-    // res.json({token});
+
+    // const salt = await bcrypt.genSalt();
+    // const sela = await Promise.all([bcrypt.hash(password1, salt)]);
+    // const newUser = await pool.query(
+    //   "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *;",
+    //   [email, sela[0]]
+    // );
+    axios.post("http://localhost:5000/")
 
     req.flash("successMessage", "Successful Signup")
     return res.redirect("/signin");
