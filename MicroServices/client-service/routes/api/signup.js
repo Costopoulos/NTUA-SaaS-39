@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../../database");
 const bcrypt = require("bcryptjs");
+const axios = require('axios')
 // const jwt = require("jsonwebtoken");
 // var redis = require('redis');
 // var JWTR =  require('jwt-redis').default;
@@ -74,29 +75,31 @@ router.get("/", (req,res) => {
 })
 
 router.post("/", async (req, res) => {
-  try {
-    // const { email, password1, password2 } = req.body;
-    // // console.log(req.body)
-    // if (password1 !== password2){
-    //   req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
-    //   return res.redirect("/signup")
-    // }
+  // try {
 
-    // const salt = await bcrypt.genSalt();
-    // const sela = await Promise.all([bcrypt.hash(password1, salt)]);
-    // const newUser = await pool.query(
-    //   "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *;",
-    //   [email, sela[0]]
-    // );
-    axios.post("http://localhost:5000/")
+    const {email, password1, password2} = req.body;
 
-    req.flash("successMessage", "Successful Signup")
-    return res.redirect("/signin");
+    axios.post("http://localhost:5000/signup",{
+      email: email,
+      password1: password1,
+      password2: password2
+    })
+    .then((response)=>{
+      // console.log(response);
+      req.flash("successMessage", "Successful Signup")
+      return res.redirect("/signin");
+
+    }, (error) => {
+      console.log(error);
+      res.status(400).json({ Message: "User with this email already exists" });
+    });
+
+    
 
 
-  } catch (err) {
-    res.status(400).json({ Message: "User with this email already exists" });
-  }
+  // } catch (err) {
+  //   res.status(400).json({ Message: "User with this swta already exists" });
+  // }
 });
 
 module.exports = router;
