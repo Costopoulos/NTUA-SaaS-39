@@ -40,6 +40,10 @@ router.post("/:id", async (req, res) => {
 
         const {user_id, user_email, answertext} = req.body;
 
+        if (user_id.length === 0 || user_email.length === 0 || answertext.length === 0){
+            return res.status(400).json({Message: "Fill all fields!"})
+        }
+
         // console.log(answertext)
 
         const questionid = req.params.id;
