@@ -6,13 +6,8 @@ router.get("/:id", async (req,res) => {
     try {
         const question_id = req.params.id;
 
-        const question = await pool.query(
-            "SELECT * FROM questions WHERE question_id = $1;",
-            [question_id]
-        );
-
-        // const answers = await pool.query(
-        //     "SELECT answer_id, answers.user_id, answered_on, question_id, answer_text, soauser.email FROM answers INNER JOIN soauser ON answers.user_id = soauser.user_id WHERE question_id = $1 ORDER BY answer_id;",
+        // const question = await pool.query(
+        //     "SELECT * FROM questions WHERE question_id = $1;",
         //     [question_id]
         // );
 
@@ -21,12 +16,12 @@ router.get("/:id", async (req,res) => {
             [question_id]
         );
 
-        console.log(question);
-        console.log(answers);
+        // console.log(question);
+        // console.log(answers.rows);
 
         // console.log(answers.rows)
 
-        return res.json(question, answers);
+        return res.json(answers.rows);
         
     } catch (error) {
         console.log(error.message);
