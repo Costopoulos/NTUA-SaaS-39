@@ -3,47 +3,53 @@ const router = express.Router();
 const pool = require("../../database");
 
 
-router.post("/", async (req,res) => {
+router.get("/", async (req,res) => {
+    try {
+        // const user_id = req.body; //header probably
 
-    // const user_id = req.body; //header probably
+        const user_id = req.header('identify')
 
-    const user_id = req.header('identif')
+        // console.log(user_id);
 
-    // console.log(user_id);
+        // const id = user_id['user_id']
 
-    // const id = user_id['user_id']
+        // console.log(id);
 
-    // console.log(id);
+        const myquestions = await pool.query(
+            "SELECT COUNT(*) FROM questions WHERE user_id = $1",
+            [user_id]
+        )
 
-    const myquestions = await pool.query(
-        "SELECT COUNT(*) FROM questions WHERE user_id = $1",
-        [user_id]
-    )
+        // console.log(myquestions);
 
-    // console.log(myquestions);
+        const myanswers = await pool.query(
+            "SELECT COUNT(*) FROM answers WHERE user_id = $1",
+            [user_id]
+        )
 
-    const myanswers = await pool.query(
-        "SELECT COUNT(*) FROM answers WHERE user_id = $1",
-        [user_id]
-    )
+        // console.log(myanswers);
 
-    // console.log(myanswers);
+        const myquestionstoday = await pool.query(
+            "SELECT COUNT(*) FROM questions WHERE user_id = $1 AND asken_on >= NOW() - interval '24 hours'",
+            [user_id]
+        )
 
-    const myquestionstoday = await pool.query(
-        "SELECT COUNT(*) FROM questions WHERE user_id = $1 AND asken_on >= NOW() - interval '24 hours'",
-        [user_id]
-    )
+        // console.log(myquestionstoday);
 
-    // console.log(myquestionstoday);
+        const myanswerstoday = await pool.query(
+            "SELECT COUNT(*) FROM answers WHERE user_id = $1 AND answered_on >= NOW() - interval '24 hours'",
+            [user_id]
+        )
 
-    const myanswerstoday = await pool.query(
-        "SELECT COUNT(*) FROM answers WHERE user_id = $1 AND answered_on >= NOW() - interval '24 hours'",
-        [user_id]
-    )
+        // console.log(myanswerstoday);
 
-    // console.log(myanswerstoday);
+        return res.json({questionscount: myquestions.rows[0].count, answerscount: myanswers.rows[0].count, questionscounttoday: myquestionstoday.rows[0].count, answerscounttoday: myanswerstoday.rows[0].count})
 
-    return res.json({questionscount: myquestions.rows[0].count, answerscount: myanswers.rows[0].count, questionscounttoday: myquestionstoday.rows[0].count, answerscounttoday: myanswerstoday.rows[0].count})
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Server Error");
+    }
+    
 });
 
 module.exports = router;
