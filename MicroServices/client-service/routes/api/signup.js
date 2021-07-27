@@ -71,7 +71,7 @@ router.get("/", (req,res) => {
   if (req.session.isLoggedIn){
     return res.redirect("/");
   }
-  return res.render("signup.ejs", {errorMessage: req.flash("successMessage")})
+  return res.render("signup.ejs", {successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 })
 
 router.post("/", async (req, res) => {
@@ -90,8 +90,10 @@ router.post("/", async (req, res) => {
       return res.redirect("/signin");
 
     }, (error) => {
-      console.log(error);
-      res.status(400).json({ Message: "User with this email already exists" });
+      // console.log(error.response.data['Message']);
+      // res.status(400).json({ Message: "User with this email already exists" });
+      req.flash("errorMessage", error.response.data['Message'])
+      return res.redirect("/signup");
     });
 
     
