@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
         // if (tokenisexpired.rows[0]) res.status(200).json({Message: "Token already expired"});
         
         const verify = jwt.verify(token, process.env.jwtSecret);
-        return res.json(verify)
+        return res.json({token: token, verify: verify})
   
       }, (error) => {
         // console.log(error.response.data['Message']);

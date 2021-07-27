@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
 router.post("/", authorization, async (req, res) => {
-
+    // console.log(req.header);
     const inserttoken = await pool.query(
         "INSERT INTO expired_tokens (token_id) VALUES ($1) RETURNING *",
         [token]
