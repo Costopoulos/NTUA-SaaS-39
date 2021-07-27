@@ -18,28 +18,18 @@ router.post("/", async (req, res) => {
   try {
     const {email, password} = req.body;
 
-    axios.post("http://localhost:5000/signin",{
+    axios.post("http://localhost:7000/signin",{
       email: email,
       password: password
     })
     .then((response)=>{
-      // console.log(response.data.token);
-      const token = response.data.token;
-      // const tokenisexpired = await pool.query(
-      //   "SELECT token_id FROM expired_tokens WHERE token_id = $1",
-      //   [token]
-      // )
-      // if (tokenisexpired.rows[0]) res.status(200).json({Message: "Token already expired"});
-      
-      const verify = jwt.verify(token, process.env.jwtSecret);
-      // req.user = verify.user;
-      // next();
+      const verify = response.data;
       // console.log(verify);
+      // console.log(response);
       req.session.isLoggedIn = true;
       req.session.user = {
         id: verify.user,
-        email: email,
-        token: token
+        email: email
       }
       req.session.save( () => {
         req.flash("successMessage", "Successful Login");
@@ -49,8 +39,10 @@ router.post("/", async (req, res) => {
       // return res.redirect("/");
 
     }, (error) => {
-      console.log(error);
-      res.status(400).json({ Message: "User with this  already exists" });
+      // console.log(error.response.data['Message']);
+      // res.status(400).json({ Message: "User with this email already exists" });
+      req.flash("errorMessage", error.response.data['Message'])
+      return res.redirect("/signin");
     });
 
 
