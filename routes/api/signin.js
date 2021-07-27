@@ -23,13 +23,16 @@ router.post("/", async (req, res) => {
       password: password
     })
     .then((response)=>{
-      const verify = response.data;
+      // console.log(response)
+      const verify = response.data.verify;
       // console.log(verify);
       // console.log(response);
+      const token = response.data.token
       req.session.isLoggedIn = true;
       req.session.user = {
         id: verify.user,
-        email: email
+        email: email,
+        token: token
       }
       req.session.save( () => {
         req.flash("successMessage", "Successful Login");

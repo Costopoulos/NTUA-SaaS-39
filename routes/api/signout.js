@@ -4,6 +4,7 @@ const router = express.Router();
 // const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
 const authorization = require("../../middleware/authorization");
+const axios = require('axios')
 require("dotenv").config();
 
 //ROUTER
@@ -66,10 +67,29 @@ require("dotenv").config();
 // });
 
 router.post('/', (req,res) => {
-    req.session.destroy((err) => {
-        if (err) throw err;
-        res.redirect('/signin');
-    });
+    // if (!req.session.user.token) return res.redirect("/")
+    try {
+        const token = req.session.user.token;
+    
+        axios.post("http://localhost:7000/signout",{
+            token: token
+        })
+        .then((response)=>{
+            req.session.destroy((err) => {
+                if (err) throw err;
+                // res.status(200).send(response.data)
+                console.log(response.data);
+                res.redirect('/signin');
+            });
+        }, (error) => {
+            return res.status(400).send(error.response.data);
+        });
+
+    } catch (error) {
+        return res.redirect("/")
+    }
+    
+
     // try {
     //     req.session.destroy();
     //     res.redirect('/signin');
