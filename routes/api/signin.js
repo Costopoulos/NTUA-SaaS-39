@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
-const bcrypt = require("bcryptjs");
+const axios = require('axios')
+const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
 //ROUTER
@@ -16,36 +16,45 @@ router.get("/", (req,res) => {
 
 router.post("/", async (req, res) => {
   try {
-    // console.log(req.body);
-    const { email, password } = req.body;
-    const checkuseremail = await pool.query(
-      "SELECT * FROM soauser WHERE email = $1;",
-      [email]
-    );
+    const {email, password} = req.body;
 
-    if (checkuseremail.rows.length === 0){ //user does not exist
-      // return res.status(401).json({Message: "User with that mail does not exist"})
-      req.flash("errorMessage", "User with this email does not exist");
-      return res.redirect("/signin");
-    }
+    axios.post("http://localhost:5000/signin",{
+      email: email,
+      password: password
+    })
+    .then((response)=>{
+      // console.log(response.data.token);
+      const token = response.data.token;
+      // const tokenisexpired = await pool.query(
+      //   "SELECT token_id FROM expired_tokens WHERE token_id = $1",
+      //   [token]
+      // )
+      // if (tokenisexpired.rows[0]) res.status(200).json({Message: "Token already expired"});
+      
+      const verify = jwt.verify(token, process.env.jwtSecret);
+      // req.user = verify.user;
+      // next();
+      // console.log(verify);
+      req.session.isLoggedIn = true;
+      req.session.user = {
+        id: verify.user,
+        email: email,
+        token: token
+      }
+      req.session.save( () => {
+        req.flash("successMessage", "Successful Login");
+        return res.redirect("/");
+      });
+      // req.flash("successMessage", "Successful Login");
+      // return res.redirect("/");
 
-    const checkpassword = await bcrypt.compare(password, checkuseremail.rows[0].password);
-    if (!checkpassword){
-      // return res.status(401).json({Message: "User's email and password do not match"});
-      req.flash("errorMessage", "User's email and password do not match");
-      return res.redirect("/signin");
-    }
-
-
-    req.session.isLoggedIn = true;
-    req.session.user = {
-      id: checkuseremail.rows[0].user_id,
-      email: email
-    }
-    req.session.save( () => {
-      req.flash("successMessage", "Successful Login");
-      return res.redirect("/");
+    }, (error) => {
+      console.log(error);
+      res.status(400).json({ Message: "User with this  already exists" });
     });
+
+
+    
     // req.flash("successMessage", "Successful Login");
     // return res.redirect("/");
 
