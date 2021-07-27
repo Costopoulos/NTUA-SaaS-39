@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 ///////////////// AUTH /////////////////////
 
 //Signup
-// app.use("/signup", require("./routes/api/signup.js"));
+app.use("/signup", require("./routes/api/signup.js"));
 
 //Signin
 app.use("/signin", require("./routes/api/signin.js"));
