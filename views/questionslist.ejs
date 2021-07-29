@@ -36,8 +36,8 @@
                     <h2 class="cardTitle"><%= questions[question].title %></h2>
                     <p style="color: #962e40; line-height: 22px; font-style: 18px;font-weight: 500;margin-bottom: 20px;"><%= questions[question].question_text %></p>
                     <div class="cardWho">
-                        <img src="https://eu.ui-avatars.com/api/?name=<%= questions[question].email %>&background=ff5e35&color=ffffff" alt="" class="who-img">
-                        <p class="whoText"><b>Asked by </b><%= questions[question].email %> <br> on <%= questions[question].asken_on %></p>
+                        <img src="https://eu.ui-avatars.com/api/?name=<%= questions[question].user_email %>&background=ff5e35&color=ffffff" alt="" class="who-img">
+                        <p class="whoText"><b>Asked by </b><%= questions[question].user_email %> <br> on <%= questions[question].asken_on %></p>
                     </div>
                     <div class="cardBottom">
                         <p class="cardKeywords">
