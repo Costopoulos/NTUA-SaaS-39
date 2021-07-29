@@ -16,5 +16,5 @@ app.use("/createquestion", require("./routes/api/questionscreate.js"));
 //Port
 const port = process.env.PORT || 4999;
 app.listen(port, () => {
-  console.log(`server has started at port ${port}`);
+  console.log(`Create Questions Service has started at port ${port}`);
 });

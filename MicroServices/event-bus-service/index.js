@@ -25,7 +25,7 @@ app.use("/signout", require("./routes/api/signout.js"));
 app.use("/createquestion", require("./routes/api/questionscreate.js"));
 
 // //Read-List Question
-// app.use("/listquestions", require("./routes/api/questionslist.js"));
+app.use("/listquestions", require("./routes/api/questionslist.js"));
 
 // //Answer Question
 // // app.use("/questions/:id", function(req,res){
@@ -51,7 +51,7 @@ app.use("/createquestion", require("./routes/api/questionscreate.js"));
 //Port
 const port = process.env.PORT || 7000;
 app.listen(port, () => {
-  console.log(`server has started at port ${port}`);
+  console.log(`Event bus has started at port ${port}`);
 });
 
 
