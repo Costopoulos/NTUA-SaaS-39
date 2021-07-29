@@ -22,5 +22,5 @@ app.use("/signout", require("./routes/api/signout.js"));
 //Port
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`server has started at port ${port}`);
+  console.log(`Auth Service has started at port ${port}`);
 });
