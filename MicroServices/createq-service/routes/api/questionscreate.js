@@ -11,9 +11,9 @@ router.post("/", async (req, res) => {
             return res.status(400).json({Message: "Fill all fields!"})
         }
 
-        var outkeys = keywords.replace(/\s/g, '')
+        // var outkeys = keywords.replace(/\s/g, '')
 
-        outkeys = outkeys.split(",");
+        // outkeys = outkeys.split(",");
 
         var newquestion = await pool.query(
             "INSERT INTO questions(user_id, title, question_text, keywords) VALUES ($1, $2, $3, $4) RETURNING *;",

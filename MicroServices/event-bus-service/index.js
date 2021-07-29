@@ -22,7 +22,7 @@ app.use("/signout", require("./routes/api/signout.js"));
 ///////////////// Questions CRUD /////////////////////
 
 // //Create Question
-// app.use("/createquestion", require("./routes/api/questionscreate.js"));
+app.use("/createquestion", require("./routes/api/questionscreate.js"));
 
 // //Read-List Question
 // app.use("/listquestions", require("./routes/api/questionslist.js"));
