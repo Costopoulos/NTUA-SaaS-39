@@ -19,7 +19,7 @@ router.get("/", async (req,res) => {
         axios.get("http://localhost:7000/listquestions")
         .then((response)=>{
         //   console.log(response);
-        console.log(response.data.allquestions);
+        // console.log(response.data.allquestions);
         return res.render("questionslist.ejs", {questions: response.data.allquestions, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
     
         }, (error) => {
