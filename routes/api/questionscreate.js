@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
+const axios = require('axios')
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -17,17 +18,21 @@ router.post("/", async (req, res) => {
     try {
         const {title, text, keywords} = req.body;
 
-        var outkeys = keywords.replace(/\s/g, '')
+        // var outkeys = keywords.replace(/\s/g, '')
 
-        outkeys = outkeys.split(",");
+        // outkeys = outkeys.split(",");
 
-        var user_id = req.session.user.id;
+        const user_id = req.session.user.id;
+        const user_email = req.session.user.email;
+        
+        // console.log(outkeys);
 
         axios.post("http://localhost:7000/createquestion",{
             user_id: user_id,
+            user_email: user_email,
             title: title,
             text: text,
-            keywords: keywords 
+            keywords: keywords
         })
         .then((response)=>{
             // console.log(response);
