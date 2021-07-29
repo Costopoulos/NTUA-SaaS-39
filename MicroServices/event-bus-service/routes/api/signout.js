@@ -15,7 +15,7 @@ const axios = require("axios")
 router.post("/", async (req, res) => {
     try {
         let token = req.body.token;
-        // console.log(token);
+        // console.log("event "+token);
         // token = console.log(token);
         const body = {
             key: "value"
@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
         }
         axios.post("http://localhost:5000/signout",body,head)
         .then((response)=>{
+            // console.log(response);
             return res.status(200).send(response.data);
     
         }, (error) => {

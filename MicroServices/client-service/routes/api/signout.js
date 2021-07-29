@@ -70,6 +70,8 @@ router.post('/', (req,res) => {
     // if (!req.session.user.token) return res.redirect("/")
     try {
         const token = req.session.user.token;
+
+        // console.log("client "+token);
     
         axios.post("http://localhost:7000/signout",{
             token: token
