@@ -27,11 +27,11 @@ app.use("/createquestion", require("./routes/api/questionscreate.js"));
 // //Read-List Question
 app.use("/listquestions", require("./routes/api/questionslist.js"));
 
+//Get one Question
+app.use("/getonequestion", require("./routes/api/getonequestion.js"));
+
 // //Answer Question
-// // app.use("/questions/:id", function(req,res){
-// //   return res.render("questionsanswer.ejs", {question_id: req.params.id})
-// // })
-// app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
+app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
 
 // ///////////////// Graphs /////////////////////
 //     //Signed Out Graphs

@@ -21,7 +21,7 @@ router.get("/:id", async (req,res) => {
 
         // console.log(answers.rows)
 
-        return res.json(answers.rows);
+        return res.json(answers.rows[0]);
         
     } catch (error) {
         console.log(error.message);

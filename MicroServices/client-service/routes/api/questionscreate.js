@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
             return res.redirect("/");
 
         }, (error) => {
-            // console.log(error.response.data['Message']);
+            console.log(error.response.data['Message']);
             // res.status(400).json({ Message: "User with this email already exists" });
             req.flash("errorMessage", error.response.data['Message'])
             return res.redirect("/createquestion");

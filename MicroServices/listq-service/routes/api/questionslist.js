@@ -23,5 +23,29 @@ router.get("/", async (req,res) => {
 
 });
 
+router.get("/:id", async (req,res) => {
+
+    const question_id = req.params.id;
+
+    try {
+        const allquestions = await pool.query(
+            "SELECT * FROM questions WHERE question_id=$1;",
+            [question_id]
+        );
+
+        // console.log(allquestions.rows);
+
+        // console.log(res.json(allquestions));
+  
+        return res.json(allquestions.rows[0])
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Server Error");
+    }
+    
+
+});
+
 
 module.exports = router;
