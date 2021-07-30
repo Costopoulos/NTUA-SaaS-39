@@ -17,17 +17,16 @@ module.exports = async function(req, res, next){
             "SELECT token_id FROM expired_tokens WHERE token_id = $1",
             [token]
         )
-        
-        console.log(tokenisexpired);
 
         if (tokenisexpired.rows[0]) res.status(200).json({Message: "Token already expired"});
-        
-        const verify = jwt.verify(token, process.env.jwtSecret);
 
+        const verify = jwt.verify(token, process.env.jwtSecret);
         console.log(verify);
         req.user = verify.user;
+       
         next();
     } catch (err) {
-        res.status(401).json({ Message: "Invalid token" });
+        res.status(200).json({ Message: "Token Already Expired, Logging Out" });
+        next()
     }
 };
