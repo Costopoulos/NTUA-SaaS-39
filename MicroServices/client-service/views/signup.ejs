@@ -18,6 +18,9 @@
         $( document ).ready(function() {
            if ("<%= errorMessage %>"){
             toastr["error"]("<%= errorMessage%>")}
+            else if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
             toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -34,7 +37,7 @@
             "hideMethod": "fadeOut"
         }
         });
-        </script>
+    </script>
     <input type="checkbox" id="hamburgerMenu">
     <nav>
        

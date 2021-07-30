@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
+const axios = require('axios')
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -17,48 +18,33 @@ router.post("/", async (req, res) => {
     try {
         const {title, text, keywords} = req.body;
 
-        // console.log(`keywords are ${keywords}`);
-        // console.log(`keywords type are ${typeof(keywords)}`);
+        // var outkeys = keywords.replace(/\s/g, '')
 
-        // var outkeys = keywords.replace(" ", "");
-        var outkeys = keywords.replace(/\s/g, '')
+        // outkeys = outkeys.split(",");
+
+        const user_id = req.session.user.id;
+        const user_email = req.session.user.email;
         
-        // console.log(`outkeys are ${outkeys}`);
+        // console.log(outkeys);
 
-        outkeys = outkeys.split(",");
+        axios.post("http://localhost:7000/createquestion",{
+            user_id: user_id,
+            user_email: user_email,
+            title: title,
+            text: text,
+            keywords: keywords
+        })
+        .then((response)=>{
+            // console.log(response);
+            req.flash("successMessage", "Question successfully created")
+            return res.redirect("/");
 
-        // console.log(`last outkeys are ${outkeys}`);
-
-        // for (var key in outkeys){
-        //     console.log(`key is ${outkeys[key]}`);
-        // }
-
-        // var newquestion = await pool.query(
-        //     "INSERT INTO questions(title, question_text, keywords) VALUES ($1, $2, $3) RETURNING *;",
-        //     [title, text, outoutkeys[0]]
-        // )
-
-        var user_id = req.session.user.id;
-
-        var newquestion = await pool.query(
-            "INSERT INTO questions(user_id, title, question_text, keywords) VALUES ($1, $2, $3, $4) RETURNING *;",
-            [user_id, title, text, outkeys]
-        )
-
-        // for (var key in outoutkeys){
-        //     var newquestion = await pool.query(
-        //         "INSERT INTO questions(title, question_text, keywords) VALUES ($1, $2, $3) RETURNING *;",
-        //         [title, text, outoutkeys[key]]
-        //     )
-        //     // var newquestion = {
-        //     //     text: "INSERT INTO questions(title, question_text, keywords) VALUES ($1, $2, $3) RETURNING *",
-        //     //     values: [title, text, outoutkeys]
-        //     // }
-        // }
-        
-
-        req.flash("successMessage", "Question successfully created");
-        return res.redirect("/");
+        }, (error) => {
+            console.log(error.response.data['Message']);
+            // res.status(400).json({ Message: "User with this email already exists" });
+            req.flash("errorMessage", error.response.data['Message'])
+            return res.redirect("/createquestion");
+        });
         
 
     } catch (e) {

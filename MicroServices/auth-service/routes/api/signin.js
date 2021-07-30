@@ -32,8 +32,9 @@ router.post("/", async (req, res) => {
       user: checkuseremail.rows[0].user_id,
       email: checkuseremail.rows[0].email
     }
-    token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600});
-    return res.json({token});
+    token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600}); 
+    // console.log(token);
+    res.json({token});
 
 
   } catch (err) {

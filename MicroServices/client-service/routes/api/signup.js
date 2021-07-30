@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../../database");
 const bcrypt = require("bcryptjs");
+const axios = require('axios')
 // const jwt = require("jsonwebtoken");
 // var redis = require('redis');
 // var JWTR =  require('jwt-redis').default;
@@ -70,43 +71,37 @@ router.get("/", (req,res) => {
   if (req.session.isLoggedIn){
     return res.redirect("/");
   }
-  return res.render("signup.ejs", {errorMessage: req.flash("successMessage")})
+  return res.render("signup.ejs", {successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
 })
 
 router.post("/", async (req, res) => {
-  try {
-    const { email, password1, password2 } = req.body;
-    // console.log(req.body)
-    if (password1 !== password2){
-      req.flash("successMessage", "Λανθασμένος συνδυασμός κωδικών")
-      return res.redirect("/signup")
-    }
+  // try {
 
-    const salt = await bcrypt.genSalt();
-    const sela = await Promise.all([bcrypt.hash(password1, salt)]);
-    const newUser = await pool.query(
-      "INSERT INTO soauser (email, password) VALUES ($1, $2) RETURNING *;",
-      [email, sela[0]]
-    );
+    const {email, password1, password2} = req.body;
 
-    // console.log(newUser.rows[0].id);
+    axios.post("http://localhost:7000/signup",{
+      email: email,
+      password1: password1,
+      password2: password2
+    })
+    .then((response)=>{
+      // console.log(response);
+      req.flash("successMessage", "Successful Signup")
+      return res.redirect("/signin");
 
-    // res.json(newUser.rows[0]);
-    //create token
-    // const payload = {
-    //   user: newUser.rows[0].user_id
-    // }
-    // token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 300});
-    // // console.log(token)
-    // res.json({token});
+    }, (error) => {
+      // console.log(error.response.data['Message']);
+      // res.status(400).json({ Message: "User with this email already exists" });
+      req.flash("errorMessage", error.response.data['Message'])
+      return res.redirect("/signup");
+    });
 
-    req.flash("successMessage", "Successful Signup")
-    return res.redirect("/signin");
+    
 
 
-  } catch (err) {
-    res.status(400).json({ Message: "User with this email already exists" });
-  }
+  // } catch (err) {
+  //   res.status(400).json({ Message: "User with this swta already exists" });
+  // }
 });
 
 module.exports = router;
