@@ -30,7 +30,7 @@ router.get("/", async (req,res) => {
     } catch (err) {
       //res.status(401).json({ Message: "User with that mail does not exist" });
       console.error(err.message);
-      res.status(500).send("Event Error");
+      res.status(500).send("Client Error");
     }
     
 });

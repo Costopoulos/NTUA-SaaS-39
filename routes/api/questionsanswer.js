@@ -121,7 +121,7 @@ router.post("/:id", async (req, res) => {
             answertext: answertext
         })
         .then((response) => {
-            console.log("edw den eimai?");
+            // console.log("edw den eimai?");
             req.flash("successMessage", "Answer successfully submitted");
             return res.redirect(`/answerquestion/${question_id}`);
         }, (error) => {
