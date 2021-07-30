@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 const express = require("express");
 const router = express.Router();
 const pool = require("../../database");
@@ -5,28 +6,27 @@ const pool = require("../../database");
 // require('dotenv').config();
 
 router.get("/", async (req,res) => {
-
-    // const top5keywords = await pool.query(
-    //     "SELECT unnest(keywords) FROM questions;"
-    // );
     
-    // const kw = await pool.query(
-    //     "SELECT * FROM (SELECT unnest(keywords),COUNT(unnest(keywords)) AS counter FROM (SELECT * FROM questions) GROUP BY keywords ORDER BY counter);"
+    // const graphkeywords = await pool.query(
+    //     "select keyword, counter from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;"
     // )
+    try {
+        axios.get("http://localhost:7000/statisticsperkeyword")
+        .then((response) => {
+            // console.log(response);
+            return res.render("kwstats.ejs", {keywords: response.data, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
+        }, (error) => {
+            console.log(error);
+            return res.status(400).send(erro);
+        })
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server Error");
+    }
     
-    const graphkeywords = await pool.query(
-        "select keyword, counter from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;"
-    )
 
-    //select keyword from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;
-
-    // console.log(graphkeywords.rows);
-
-    // console.log(kw);
-
-    // console.log(top5keywords.rows);
-
-    return res.render("kwstats.ejs", {keywords: graphkeywords.rows, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
+    
 });
 
 module.exports = router;
