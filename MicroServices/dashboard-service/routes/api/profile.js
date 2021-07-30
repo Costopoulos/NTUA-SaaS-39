@@ -3,11 +3,12 @@ const router = express.Router();
 const pool = require("../../database");
 
 
-router.get("/", async (req,res) => {
+router.post("/", async (req,res) => {
     try {
-        // const user_id = req.body; //header probably
+        const {user_id} = req.body; //header probably
+        console.log(user_id);
 
-        const user_id = req.header('identify')
+        // const user_id = req.header('identify')
 
         // console.log(user_id);
 

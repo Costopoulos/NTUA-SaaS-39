@@ -42,7 +42,7 @@ app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
 // //Dashboard
-// app.use("/dashboard", require('./routes/api/profile.js'))
+app.use("/dashboard", require('./routes/api/profile.js'))
 // // app.get("/dashboard", (req,res) => {
 // //   return res.render('dashboard.ejs', {successMessage: req.flash("successMessage")});
 // // });
