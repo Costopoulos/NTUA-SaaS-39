@@ -26,7 +26,8 @@ module.exports = async function(req, res, next){
        
         next();
     } catch (err) {
-        res.status(200).json({ Message: "Token Already Expired, Logging Out" });
-        next()
+        // res.status(200).json({ Message: "Token Already Expired, Logging Out" });
+        // next()
+        res.status(401).json({ Message: "Invalid token" });
     }
 };
