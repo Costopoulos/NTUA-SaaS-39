@@ -7,30 +7,36 @@ router.get("/", async (req,res) => {
     // const graph = await pool.query(
     //     "SELECT title, count(*) FROM questions WHERE asken_on >= NOW() - interval '1 week' GROUP BY title LIMIT 5;"
     // )
+    try {
+        const day7 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '24 hours';"
+        )
+        const day6 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '48 hours' and asken_on <= NOW() - interval '1 day';"
+        )
+        const day5 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '3 days' and asken_on <= NOW() - interval '2 days';"
+        )
+        const day4 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '4 days' and asken_on <= NOW() - interval '3 days';"
+        )
+        const day3 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '5 days' and asken_on <= NOW() - interval '4 days';"
+        )
+        const day2 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '6 days' and asken_on <= NOW() - interval '5 days';"
+        )
+        const day1 = await pool.query(
+            "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '1 week' and asken_on <= NOW() - interval '6 days';"
+        )
+    
+        return res.json({day1: day1.rows, day2: day2.rows,day3: day3.rows,day4: day4.rows,day5: day5.rows,day6: day6.rows,day7: day7.rows});
 
-    const day7 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '24 hours';"
-    )
-    const day6 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '48 hours' and asken_on <= NOW() - interval '1 day';"
-    )
-    const day5 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '3 days' and asken_on <= NOW() - interval '2 days';"
-    )
-    const day4 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '4 days' and asken_on <= NOW() - interval '3 days';"
-    )
-    const day3 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '5 days' and asken_on <= NOW() - interval '4 days';"
-    )
-    const day2 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '6 days' and asken_on <= NOW() - interval '5 days';"
-    )
-    const day1 = await pool.query(
-        "SELECT count(*) FROM questions WHERE asken_on >= NOW() - interval '1 week' and asken_on <= NOW() - interval '6 days';"
-    )
-
-    return res.json({day1: day1.rows, day2: day2.rows,day3: day3.rows,day4: day4.rows,day5: day5.rows,day6: day6.rows,day7: day7.rows});
+    } catch (error) {
+        console.error(err.message);
+        res.status(500).send("Statistics Service Error");
+    }
+    
 });
 
 module.exports = router;

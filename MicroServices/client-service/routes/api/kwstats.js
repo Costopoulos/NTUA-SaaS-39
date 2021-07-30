@@ -17,7 +17,7 @@ router.get("/", async (req,res) => {
             return res.render("kwstats.ejs", {keywords: response.data, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
         }, (error) => {
             console.log(error);
-            return res.status(400).send(erro);
+            return res.status(400).send(error);
         })
 
     } catch (error) {

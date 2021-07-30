@@ -14,7 +14,7 @@ router.get("/", async (req,res) => {
 
     } catch (error) {
         console.error(err.message);
-        res.status(500).send("Service Bus Error");
+        res.status(500).send("Statistics Service Error");
     }
     
     

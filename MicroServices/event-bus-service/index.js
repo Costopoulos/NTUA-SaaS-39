@@ -39,7 +39,7 @@ app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
 app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 
 // //Questions per day
-// app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
+app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 
 // //Dashboard
 // app.use("/dashboard", require('./routes/api/profile.js'))
