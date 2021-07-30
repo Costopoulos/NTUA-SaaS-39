@@ -6,7 +6,7 @@ const pool = require("../../database");
 router.post("/", async (req,res) => {
     try {
         const {user_id} = req.body; //header probably
-        console.log(user_id);
+        // console.log(user_id);
 
         // const user_id = req.header('identify')
 

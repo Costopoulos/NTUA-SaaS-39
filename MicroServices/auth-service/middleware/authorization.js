@@ -21,13 +21,13 @@ module.exports = async function(req, res, next){
         if (tokenisexpired.rows[0]) res.status(200).json({Message: "Token already expired"});
 
         const verify = jwt.verify(token, process.env.jwtSecret);
-        console.log(verify);
+        // console.log(verify);
         req.user = verify.user;
        
         next();
     } catch (err) {
         // res.status(200).json({ Message: "Token Already Expired, Logging Out" });
         // next()
-        res.status(401).json({ Message: "Invalid token" });
+        res.status(401).json({ Message: "Token Already Expired" });
     }
 };

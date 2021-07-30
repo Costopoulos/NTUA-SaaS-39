@@ -84,6 +84,14 @@ router.post('/', (req,res) => {
                 res.redirect('/signin');
             });
         }, (error) => {
+            if (error.response.data['Message'] === "Token Already Expired"){
+                req.session.destroy((err) => {
+                    if (err) throw err;
+                    // res.status(200).send(response.data)
+                    // console.log(response.data);
+                    return res.redirect('/signin');
+                });
+            }
             return res.status(400).send(error.response.data);
         });
 

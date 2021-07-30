@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
 
         const {user_id} = req.body;
 
-        console.log(user_id);
+        // console.log(user_id);
 
         if (user_id.length === 0){
             return res.status(400).json({Message: "Fill all fields!"})
