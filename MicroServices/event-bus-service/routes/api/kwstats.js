@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -11,18 +11,17 @@ router.get("/", async (req,res) => {
     //     "select keyword, counter from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;"
     // )
     try {
-        axios.get("http://localhost:7000/statisticsperkeyword")
+        axios.get("http://localhost:4996/statisticsperkeyword")
         .then((response) => {
-            // console.log(response);
-            return res.render("kwstats.ejs", {keywords: response.data, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
+            // console.log(response.data);
+            return res.json(response.data)
         }, (error) => {
-            console.log(error);
-            return res.status(400).send(erro);
+            return res.status(400).send(error.response.data);
         })
 
     } catch (error) {
-        console.error(error.message);
-        res.status(500).send("Server Error");
+        console.error(err.message);
+        res.status(500).send("Event Error");
     }
     
 

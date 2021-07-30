@@ -36,7 +36,7 @@ app.use("/answerquestion", require("./routes/api/questionsanswer.js"))
 // ///////////////// Graphs /////////////////////
 //     //Signed Out Graphs
 // //Questions per Keyword
-// app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
+app.use("/statisticsperkeyword", require("./routes/api/kwstats.js"))
 
 // //Questions per day
 // app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))

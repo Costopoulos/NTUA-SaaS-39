@@ -22,9 +22,13 @@ router.post("/", async (req, res) => {
             keywords: keywords
           })
 
-          await Promise.all([promise1, promise2])
+          const promise3 = axios.post("http://localhost:4996/createquestion",{
+            keywords: keywords
+          })
+
+          await Promise.all([promise1, promise2, promise3])
           .then((response => {
-            console.log(response);
+            // console.log(response);
             res.json({Message: "Question successfully created"})
           }), (error) => {
             console.log(error);
