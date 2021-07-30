@@ -11,7 +11,7 @@ router.get("/:id", async (req, res) => {
         axios.get(`http://localhost:4997/answerquestion/${question_id}`)
         .then((response)=>{
           // console.log(response);
-          return res.json(response.data)
+          return res.json({answers: response.data})
     
         }, (error) => {
           // console.log(error.response.data['Message']);
@@ -23,6 +23,33 @@ router.get("/:id", async (req, res) => {
       console.error(err.message);
       res.status(500).send("Event Error");
     }
+});
+
+router.post("/:id", async (req, res) => {
+  try {
+    const {user_id, user_email, answertext} = req.body;
+
+    const question_id = req.params.id;
+  
+      axios.post(`http://localhost:4997/answerquestion/${question_id}`, {
+        user_id: user_id,
+        user_email: user_email,
+        answertext: answertext
+      })
+      .then((response)=>{
+        // console.log(response);
+        return res.json(response.data)
+  
+      }, (error) => {
+        // console.log(error.response.data['Message']);
+        return res.status(400).send(error.response.data);
+      });
+  
+  } catch (err) {
+    //res.status(401).json({ Message: "User with that mail does not exist" });
+    console.error(err.message);
+    res.status(500).send("Event Error");
+  }
 });
 
 module.exports = router;

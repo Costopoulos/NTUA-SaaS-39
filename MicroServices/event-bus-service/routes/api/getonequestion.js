@@ -10,7 +10,7 @@ router.get("/:id", async (req,res) => {
     try {
         axios.get(`http://localhost:4998/listquestions/${question_id}`)
         .then((response) => {
-            return res.json(response.data)
+            return res.json({question: response.data})
         }, (error) =>{
             return res.status(400).send(error.response.data);
         }) 

@@ -16,13 +16,17 @@ router.get("/:id", async (req,res) => {
 
     try {
         let data = []
-        let data1 = []
+        let datadict = []
         axios.get(`http://localhost:7000/getonequestion/${question_id}`)
         .then((response)=>{
             // console.log("mia erwthsh "+JSON.stringify(response.data));
             // return res.json({allquestions: response.data})
             // const thequestion = response.data
             data.push(response.data)
+            datadict.push({
+                key: "question",
+                value: response.data
+            })
         })
         .then((response) => {
             axios.get(`http://localhost:7000/answerquestion/${question_id}`)
@@ -31,14 +35,21 @@ router.get("/:id", async (req,res) => {
                 // return resp.data
                 data.push(resp.data)
                 // console.log(data[0]);
+                datadict.push({
+                    key: "answers",
+                    value: resp.data
+                })
             })
             .then((responsara) => {
                 // console.log(data);
                 // console.log(data1[0]);
                 // data.push(responsara)
                 // console.log(responsara);
-                console.log(data);
-                res.render("questionsanswer.ejs", {qid: question_id, question: data[0], answers: Object.keys(data[0]), successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
+                // console.log(data);
+                // console.log("datadict is "+JSON.stringify(datadict));
+                // console.log(datadict[1].value.answers)
+                // console.log(datadict[1].value.answers)
+                res.render("questionsanswer.ejs", {qid: question_id, question: datadict[0].value.question, answers: datadict[1].value.answers, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
             })
         })
         
@@ -109,14 +120,21 @@ router.post("/:id", async (req, res) => {
             user_email: user_email,
             answertext: answertext
         })
+        .then((response) => {
+            console.log("edw den eimai?");
+            req.flash("successMessage", "Answer successfully submitted");
+            return res.redirect(`/answerquestion/${question_id}`);
+        }, (error) => {
+            req.flash("errorMessage", error.response.data['Message'])
+            return res.redirect(`/answerquestion/${question_id}`);
+        }) 
 
         // var newanswer = await pool.query(
         //     "INSERT INTO answers(user_id, question_id, answer_text) VALUES ($1,$2,$3);",
         //     [user_id, questionid, answertext]
         // )
 
-        req.flash("successMessage", "Answer successfully submitted");
-        return res.redirect(`/answerquestion/${questionid}`);
+        
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error");
