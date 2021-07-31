@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require('axios')
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
 //ROUTER
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   try {
     const {email, password} = req.body;
 
-    axios.post("http://localhost:7000/signin",{
+    axios.post("https://mss-event-bus-saas39.herokuapp.com/signin",{
       email: email,
       password: password
     })

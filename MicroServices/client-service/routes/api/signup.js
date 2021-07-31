@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
-const bcrypt = require("bcryptjs");
+// const pool = require("../../database");
+// const bcrypt = require("bcryptjs");
 const axios = require('axios')
 // const jwt = require("jsonwebtoken");
 // var redis = require('redis');
@@ -79,7 +79,7 @@ router.post("/", async (req, res) => {
 
     const {email, password1, password2} = req.body;
 
-    axios.post("http://localhost:7000/signup",{
+    axios.post("https://mss-event-bus-saas39.herokuapp.com/signup",{
       email: email,
       password1: password1,
       password2: password2

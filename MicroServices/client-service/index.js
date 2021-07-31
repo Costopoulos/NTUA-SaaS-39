@@ -14,11 +14,12 @@ const sessionPool = require('pg').Pool;
 
 
   const sessionDBaccess = new sessionPool({
-    user: "postgres",
-    password: "68709900",
-    host: "localhost",
+    user: "udqjkskqseuinq",
+    password: "dff6bbd26224049e0ec2502c0d718892104a3d1bc0703a288c444375035ada2e",
+    host: "ec2-54-73-147-133.eu-west-1.compute.amazonaws.com",
     port: 5432,
-    database: "client_mss"
+    database: "d3g0s0mcoqsk86",
+    ssl: { rejectUnauthorized: false}
   });
 
   

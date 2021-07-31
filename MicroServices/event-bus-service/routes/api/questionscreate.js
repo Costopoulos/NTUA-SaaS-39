@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
     try {
         const {user_id, user_email, title, text, keywords} = req.body;
     
-        const promise1 = axios.post("http://localhost:4999/createquestion",{
+        const promise1 = axios.post("https://mss-createq-service-saas39.herokuapp.com/createquestion",{
             user_id: user_id,
             user_email: user_email,
             title: title,
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
             keywords: keywords
         })
 
-        const promise2 = axios.post("http://localhost:4998/createquestion",{
+        const promise2 = axios.post("https://mss-listq-service-saas39.herokuapp.com/createquestion",{
             user_id: user_id,
             user_email: user_email,
             title: title,
@@ -22,11 +22,11 @@ router.post("/", async (req, res) => {
             keywords: keywords
           })
 
-          const promise3 = axios.post("http://localhost:4996/createquestion",{
+          const promise3 = axios.post("https://mss-stats-service-saas39.herokuapp.com/createquestion",{
             keywords: keywords
           })
 
-          const promise4 = axios.post("http://localhost:4995/createquestion",{
+          const promise4 = axios.post("https://mss-dashboard-service-saas39.herokuapp.com/createquestion",{
             user_id: user_id
           })
 

@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
       user: checkuseremail.rows[0].user_id,
       email: checkuseremail.rows[0].email
     }
-    token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600}); 
+    token = jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600*24*30}); 
     // console.log(token);
     res.json({token});
 

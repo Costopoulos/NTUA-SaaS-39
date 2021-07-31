@@ -8,7 +8,7 @@ router.get("/:id", async (req,res) => {
     const question_id = req.params.id
 
     try {
-        axios.get(`http://localhost:4998/listquestions/${question_id}`)
+        axios.get(`https://mss-listq-service-saas39.herokuapp.com/listquestions/${question_id}`)
         .then((response) => {
             return res.json({question: response.data})
         }, (error) =>{

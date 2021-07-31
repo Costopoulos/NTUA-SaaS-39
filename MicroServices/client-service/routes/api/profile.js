@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -27,7 +27,7 @@ router.get("/", async (req,res) => {
         //     [req.session.user.id]
         // )
         const user_id = req.session.user.id
-        axios.post("http://localhost:7000/dashboard/", {
+        axios.post("https://mss-event-bus-saas39.herokuapp.com/dashboard/", {
             user_id: user_id
         })
         .then((response)=>{

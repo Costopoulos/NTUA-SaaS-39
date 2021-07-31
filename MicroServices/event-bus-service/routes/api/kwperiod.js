@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/", async (req,res) => {
     
     try {
-        axios.get("http://localhost:4996/statisticsperperiod")
+        axios.get("https://mss-stats-service-saas39.herokuapp.com/statisticsperperiod")
         .then((response) => {
             console.log(response.data);
             return res.json(response.data)

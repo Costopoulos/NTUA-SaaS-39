@@ -16,7 +16,7 @@ router.get("/", async (req,res) => {
     //     "SELECT question_id, questions.user_id, asken_on, title, question_text, keywords, soauser.email FROM questions INNER JOIN soauser ON questions.user_id = soauser.user_id ;"
     // );
     try {
-        axios.get("http://localhost:7000/listquestions")
+        axios.get("https://mss-event-bus-saas39.herokuapp.com/listquestions")
         .then((response)=>{
         //   console.log(response);
         // console.log(response.data.allquestions);

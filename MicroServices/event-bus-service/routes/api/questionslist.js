@@ -5,7 +5,7 @@ const axios = require('axios')
 router.get("/", async (req,res) => {
 
     try {
-        axios.get("http://localhost:4998/listquestions")
+        axios.get("https://mss-listq-service-saas39.herokuapp.com/listquestions")
         .then((response)=>{
           // console.log(response);
           return res.json({allquestions: response.data})
