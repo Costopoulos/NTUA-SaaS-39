@@ -39,6 +39,7 @@ router.post("/", async (req, res) => {
 
   } catch (err) {
     // res.status(401).json({ Message: "User with that mail does not exist" });
+    console.log("edw");
     console.error(err.message);
     return res.status(500).send("Server Error");
   }
