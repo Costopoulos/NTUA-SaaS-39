@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
         
         // console.log(outkeys);
 
-        axios.post("https://mss-event-bus-saas39.herokuapp.com/createquestion",{
+        axios.post("https://saas39-event-bus.herokuapp.com/createquestion",{
             user_id: user_id,
             user_email: user_email,
             title: title,
