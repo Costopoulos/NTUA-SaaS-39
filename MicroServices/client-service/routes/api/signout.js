@@ -71,7 +71,7 @@ router.post('/', (req,res) => {
     try {
         const token = req.session.user.token;
     
-        axios.post("https://mss-event-bus-saas39.herokuapp.com/signout",{
+        axios.post("https://saas39-event-bus.herokuapp.com/signout",{
             token: token
         })
         .then((response)=>{

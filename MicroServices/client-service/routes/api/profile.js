@@ -27,7 +27,7 @@ router.get("/", async (req,res) => {
         //     [req.session.user.id]
         // )
         const user_id = req.session.user.id
-        axios.post("https://mss-event-bus-saas39.herokuapp.com/dashboard/", {
+        axios.post("https://saas39-event-bus.herokuapp.com/dashboard/", {
             user_id: user_id
         })
         .then((response)=>{
