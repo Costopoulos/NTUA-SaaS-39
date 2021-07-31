@@ -6,7 +6,7 @@ router.get("/", async (req,res) => {
 
     try {
         const allquestions = await pool.query(
-            "SELECT * FROM questions;"
+            "SELECT question_id,user_id,user_email,title,question_text,keywords,to_char(asken_on, 'HH24:MI TZ') as asken_on FROM questions;"
         );
 
         // console.log(allquestions.rows);
