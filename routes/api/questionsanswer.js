@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -17,7 +17,7 @@ router.get("/:id", async (req,res) => {
     try {
         let data = []
         let datadict = []
-        axios.get(`http://localhost:7000/getonequestion/${question_id}`)
+        axios.get(`https://mss-event-bus-saas39.herokuapp.com/getonequestion/${question_id}`)
         .then((response)=>{
             // console.log("mia erwthsh "+JSON.stringify(response.data));
             // return res.json({allquestions: response.data})
@@ -29,7 +29,7 @@ router.get("/:id", async (req,res) => {
             })
         })
         .then((response) => {
-            axios.get(`http://localhost:7000/answerquestion/${question_id}`)
+            axios.get(`https://mss-event-bus-saas39.herokuapp.com/answerquestion/${question_id}`)
             .then((resp) => {
                 // console.log(resp);
                 // return resp.data
@@ -115,7 +115,7 @@ router.post("/:id", async (req, res) => {
 
         const user_id = req.session.user.id;
 
-        axios.post(`http://localhost:7000/answerquestion/${question_id}`,{
+        axios.post(`https://mss-event-bus-saas39.herokuapp.com/answerquestion/${question_id}`,{
             user_id: user_id,
             user_email: user_email,
             answertext: answertext

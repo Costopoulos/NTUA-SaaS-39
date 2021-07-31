@@ -3,7 +3,7 @@ const router = express.Router();
 // const pool = require("../../database");
 // const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
-const authorization = require("../../middleware/authorization");
+// const authorization = require("../../middleware/authorization");
 const axios = require('axios')
 require("dotenv").config();
 
@@ -70,10 +70,8 @@ router.post('/', (req,res) => {
     // if (!req.session.user.token) return res.redirect("/")
     try {
         const token = req.session.user.token;
-
-        // console.log("client "+token);
     
-        axios.post("http://localhost:7000/signout",{
+        axios.post("https://mss-event-bus-saas39.herokuapp.com/signout",{
             token: token
         })
         .then((response)=>{

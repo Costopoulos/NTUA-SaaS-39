@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const express = require("express");
 const router = express.Router();
-const pool = require("../../database");
+// const pool = require("../../database");
 // const authorization = require("../../middleware/authorization");
 // require('dotenv').config();
 
@@ -11,7 +11,7 @@ router.get("/", async (req,res) => {
     //     "select keyword, counter from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;"
     // )
     try {
-        axios.get("http://localhost:7000/statisticsperkeyword")
+        axios.get("https://mss-event-bus-saas39.herokuapp.com/statisticsperkeyword")
         .then((response) => {
             // console.log(response);
             return res.render("kwstats.ejs", {keywords: response.data, successMessage: req.flash("successMessage"), errorMessage: req.flash("errorMessage")})
