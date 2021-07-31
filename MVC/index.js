@@ -179,6 +179,16 @@ app.use("/statisticsperperiod", require("./routes/api/kwperiod.js"))
 //Dashboard
 app.use("/dashboard", require('./routes/api/profile.js'))
 
+//About
+app.get("/about", (req,res) => {
+  return res.render('about.ejs');
+});
+
+//Contact
+app.get("/contact", (req,res) => {
+  return res.render('contact.ejs');
+});
+
 //Static files
 app.use('/static', express.static('media'));
 

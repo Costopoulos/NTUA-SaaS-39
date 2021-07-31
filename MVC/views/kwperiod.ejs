@@ -63,7 +63,8 @@
         let kwChartWithStuff = new Chart(kwChart, {
             type: 'bar',//line
             data: {
-                labels: [`${date6}/${month}`,`${date5}/${month}`,`${date4}/${month}`,`${date3}/${month}`,`${date2}/${month}`,`${date1}/${month}`,`${date}/${month}`],
+                // labels: [`${date6}/${month}`,`${date5}/${month}`,`${date4}/${month}`,`${date3}/${month}`,`${date2}/${month}`,`${date1}/${month}`,`${date}/${month}`],
+                labels: ['<%= lday1[0].day %>/<%= lday1[0].month %>','<%= lday2[0].day %>/<%= lday2[0].month %>','<%= lday3[0].day %>/<%= lday3[0].month %>','<%= lday4[0].day %>/<%= lday4[0].month %>','<%= lday5[0].day %>/<%= lday5[0].month %>','<%= lday6[0].day %>/<%= lday6[0].month %>', '<%= lday7[0].day %>/<%= lday7[0].month %>'],
                 datasets: [{
                     label: 'Most Used Keywords',
                     data:['<%= day1[0].count %>','<%= day2[0].count %>','<%= day3[0].count %>','<%= day4[0].count %>','<%= day5[0].count %>','<%= day6[0].count %>','<%= day7[0].count %>',],
