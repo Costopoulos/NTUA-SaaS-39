@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     try {
       const {email, password} = req.body;
   
-      axios.post("https://mss-auth-service-saas39.herokuapp.com/signin",{
+      axios.post("https://saas39-auth-service.herokuapp.com/signin",{
         email: email,
         password: password
       })

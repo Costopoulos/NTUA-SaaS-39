@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
                 'jwt_token': token
             }
         }
-        axios.post("https://mss-auth-service-saas39.herokuapp.com/signout",body,head)
+        axios.post("https://saas39-auth-service.herokuapp.com/signout",body,head)
         .then((response)=>{
             // console.log(response);
             return res.status(200).send(response.data);

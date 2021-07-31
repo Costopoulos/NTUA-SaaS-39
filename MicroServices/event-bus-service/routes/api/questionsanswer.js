@@ -8,7 +8,7 @@ router.get("/:id", async (req, res) => {
 
       const question_id = req.params.id;
     
-        axios.get(`https://mss-answerq-service-saas39.herokuapp.com/answerquestion/${question_id}`)
+        axios.get(`https://saas39-answerq-service.herokuapp.com/answerquestion/${question_id}`)
         .then((response)=>{
           // console.log(response);
           return res.json({answers: response.data})
@@ -31,7 +31,7 @@ router.post("/:id", async (req, res) => {
 
     const question_id = req.params.id;
   
-      const promise1 = axios.post(`https://mss-answerq-service-saas39.herokuapp.com/answerquestion/${question_id}`, {
+      const promise1 = axios.post(`https://saas39-answerq-service.herokuapp.com/answerquestion/${question_id}`, {
         user_id: user_id,
         user_email: user_email,
         answertext: answertext
@@ -44,7 +44,7 @@ router.post("/:id", async (req, res) => {
       //   // console.log(error.response.data['Message']);
       //   return res.status(400).send(error.response.data);
       // });
-      const promise2 = axios.post(`https://mss-dashboard-service-saas39.herokuapp.com/answerquestion/`, {
+      const promise2 = axios.post(`https://saas39-dashboard-service.herokuapp.com/answerquestion/`, {
         user_id: user_id
       })
       await Promise.all([promise1, promise2])

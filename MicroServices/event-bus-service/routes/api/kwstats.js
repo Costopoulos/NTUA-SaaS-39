@@ -11,7 +11,7 @@ router.get("/", async (req,res) => {
     //     "select keyword, counter from (select keyword, count(*) as counter from (select unnest(keywords) as keyword from questions) as g group by keyword) as k order by counter desc limit 5;"
     // )
     try {
-        axios.get("https://mss-stats-service-saas39.herokuapp.com/statisticsperkeyword")
+        axios.get("https://saas39-stats-service.herokuapp.com/statisticsperkeyword")
         .then((response) => {
             // console.log(response.data);
             return res.json(response.data)

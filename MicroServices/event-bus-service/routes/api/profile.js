@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/", async (req,res) => {
     try {
         const {user_id} = req.body
-        axios.post("https://mss-dashboard-service-saas39.herokuapp.com/dashboard/",{
+        axios.post("https://saas39-dashboard-service.herokuapp.com/dashboard/",{
             user_id: user_id
         })
         .then((response)=>{
