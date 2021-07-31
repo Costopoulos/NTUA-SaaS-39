@@ -12,7 +12,7 @@ router.get("/:id", async (req,res) => {
         // );
 
         const answers = await pool.query(
-            "SELECT * FROM answers WHERE question_id = $1;",
+            "SELECT answer_id,user_id,user_email,question_id,answer_text,to_char(answered_on, 'HH24:MI TZ') as answered_on FROM answers WHERE question_id = $1;",
             [question_id]
         );
 
