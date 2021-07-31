@@ -25,7 +25,7 @@ router.get("/:id", async (req,res) => {
     // );
 
     const answers = await pool.query(
-        "SELECT answer_id, answers.user_id, to_char(answered_on, 'HH24:MI') as answered_on, question_id, answer_text, soauser.email FROM answers INNER JOIN soauser ON answers.user_id = soauser.user_id WHERE question_id = $1 ORDER BY answer_id;",
+        "SELECT answer_id, answers.user_id, to_char(answered_on, 'HH24:MI TZ') as answered_on, question_id, answer_text, soauser.email FROM answers INNER JOIN soauser ON answers.user_id = soauser.user_id WHERE question_id = $1 ORDER BY answer_id;",
         [question_id]
     );
 
