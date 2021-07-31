@@ -22,7 +22,7 @@ CREATE TABLE questions(
     title varchar(255) not null,
     question_text text not null,
     keywords text[],
-    asked_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    asken_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     -- answers text[],
     primary key(question_id),
     constraint fk_user foreign key(user_id) references soauser(user_id) on delete no action
