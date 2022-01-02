@@ -4,3 +4,8 @@
 ## Authors
 * <a href="https://github.com/Costopoulos">Constantinos Costopoulos</a>
 * <a href="https://github.com/Tsaousis">Costas Tsaousis</a>
+
+## Try it out
+You can see the functionalities by visiting the following websites:
+- http://saas39-mvc.herokuapp.com/
+- https://saas39-client-service.herokuapp.com/
