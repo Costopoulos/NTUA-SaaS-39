@@ -22,11 +22,11 @@ const sessionPool = require('pg').Pool;
   //   database: "soa_db" || "d8vre040lu8r33" || "public"
   // });
   const sessionDBaccess = new sessionPool({
-    user: "umwclojvotmilr",
-    password: "f6d873fd333fc8160b810f689d859eb3ee8b85d1fe7a472949f4fb14c9ca6ad8",
-    host: "ec2-54-73-147-133.eu-west-1.compute.amazonaws.com",
+    user: "qbdthljsvrvznk",
+    password: "d9957a53da8135dbd0374b520218709aa1e4e28d2a5c5ede94b0f38611980b53",
+    host: "ec2-34-247-72-29.eu-west-1.compute.amazonaws.com",
     port: 5432,
-    database: "d2sn9cmc5n693u",
+    database: "dfasf294n2dgi",
     ssl: { rejectUnauthorized: false}
   });
 
