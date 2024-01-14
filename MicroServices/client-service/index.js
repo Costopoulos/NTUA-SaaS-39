@@ -14,11 +14,11 @@ const sessionPool = require('pg').Pool;
 
 
   const sessionDBaccess = new sessionPool({
-    user: "fhzlpxsemtqwgl",
-    password: "c72a5a5221b046b6ee16d576993553ebf16507f3b35e23c5e4fc76b7cd2f413a",
-    host: "ec2-52-30-67-143.eu-west-1.compute.amazonaws.com",
+    user: "opiicznpsmmwwh",
+    password: "e9354e70dc0106c07294505ccf1fad9f725038d3f8866c9812a97505a775f039",
+    host: "ec2-34-242-154-118.eu-west-1.compute.amazonaws.com",
     port: 5432,
-    database: "d1hlcs72pal7t7",
+    database: "d7kjh59eue57h5",
     ssl: { rejectUnauthorized: false}
   });
 
