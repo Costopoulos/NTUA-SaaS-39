@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+</head>
+
+<body>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
+
+        <label for="hamburgerMenu"> <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
+        <a href="/" class="navTitle">Askmeanything-39</a>
+        <div class="sign">
+            <a href="/dashboard" class="sign-in">DASHBOARD</a>
+            <p class="sign-up"><%= user.email %></p>
+        </div>
+    </nav>
+    <main class="signPage QuestionPage">
+        <h1>
+            Ask a Question
+        </h1>
+        <form action="/createquestion" method="POST">
+            <div class="formItem">
+                <label for="fname">Question Title:</label>
+                <input type="text" id="fname" name="title" placeholder="Ask (me) anything">
+            </div>
+            <div class="formItem">
+                <label for="subject">Question Text:</label>
+                <textarea id="subject" cols="30" rows="10" name="text"></textarea>
+            </div>
+            <div class="formItem">
+                <label for="keyWords">Keywords:</label>
+                <input type="text" id="lname" name="keywords">
+            </div>
+            <div class="formItem formButtons">
+                <button type="submit">SUBMIT</button>
+                <a href="/">CANCEL</a>
+             </div>
+        </form>
+
+    </main>
+    <footer>
+        <a href="/about" class="footerLink">About</a>
+        <a href="/contact" class="footerLink">Contact Us</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39/tree/main/Documentation" class="footerLink">Project Documentation</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+        <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
+    </footer>
+    <script src="/static/scripts/script.js"></script>
+</body>
+
+</html>

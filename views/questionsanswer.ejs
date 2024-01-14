@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+
+<body>
+    <script>
+        $( document ).ready(function() {
+           if ("<%= errorMessage %>"){
+            toastr["error"]("<%= errorMessage%>")}
+            else if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
+            toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        });
+    </script>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
+
+        <label for="hamburgerMenu"> <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
+        <a href="/" class="navTitle">Askmeanything-39</a>
+        <div class="sign">
+          <a href="/dashboard" class="sign-in">DASHBOARD</a>
+          <p class="sign-up"><%= user.email %></p>
+      </div>
+    </nav>
+    <main class="signPage QuestionPage">
+        <h1>
+            Ask a Question
+        </h1>
+        <form action="/answerquestion/<%= qid %>" method="POST">
+            <div class="formItem">
+                <label for="fname">Question Title:</label>
+                <input type="text" id="fname" name="title" value="<%= question.title %>" readonly>
+            </div>
+
+            <div class="formItem">
+                <label for="keyWords">Keywords:</label>
+                <input type="text" id="lname" name="keywords" value="<%=question.keywords%>" readonly>
+            </div>
+            <div class="formItem" style="justify-content: left;">
+            <label for="allans">Already given answers:</label></div>
+            <% for (var answer in answers) { %>
+                <div class="formItem">
+                    <div class="questionCards" style="margin: 0px auto 0; border: 1px solid white; border-radius: 15px;">
+                        <div class="questionCard2" style="padding: 10px;" >
+                            <p style="color: #962e40; line-height: 22px; font-style: 18px;font-weight: 500;margin-bottom: 20px;"><%= answers[answer].answer_text %></p>
+                            <div class="cardWho">
+                                <img src="https://eu.ui-avatars.com/api/?name=<%= answers[answer].user_email %>&background=962e40&color=ffffff" alt="" class="who-img">
+                                <p class="whoText"><b>Answered by </b><%= answers[answer].user_email %> <br> on <%= answers[answer].answered_on %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+
+            <div class="formItem">
+                <label for="subject">Answer Text:</label>
+                <textarea id="subject" cols="30" rows="10" name="text"></textarea>
+            </div>
+            
+            <div class="formItem formButtons">
+                <button type="submit">SUBMIT</button>
+                <a href="/">CANCEL</a>
+             </div>
+        </form>
+
+    </main>
+    <footer>
+        <a href="/about" class="footerLink">About</a>
+        <a href="/contact" class="footerLink">Contact Us</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39/tree/main/Documentation" class="footerLink">Project Documentation</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+        <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
+    </footer>
+    <script src="/static/scripts/script.js"></script>
+</body>
+
+</html>

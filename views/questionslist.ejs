@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Page</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+
+<body>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
+
+        <label for="hamburgerMenu"> <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
+        <a href="/" class="navTitle">Askmeanything-39</a>
+        <div class="sign">
+            <a href="/dashboard" class="sign-in">DASHBOARD</a>
+            <p class="sign-up"><%= user.email %></p>
+        </div>
+    </nav>
+    <main class="homePage listPage">
+        <h1>
+            Let's see what you will answer today <b><%= user.email%>!</b>
+        </h1>
+        <% for (var question in questions) { %>
+            <div class="questionCards">
+                <div class="questionCard">
+                    <h2 class="cardTitle"><%= questions[question].title %></h2>
+                    <p style="color: #962e40; line-height: 22px; font-style: 18px;font-weight: 500;margin-bottom: 20px;"><%= questions[question].question_text %></p>
+                    <div class="cardWho">
+                        <img src="https://eu.ui-avatars.com/api/?name=<%= questions[question].user_email %>&background=ff5e35&color=ffffff" alt="" class="who-img">
+                        <p class="whoText"><b>Asked by </b><%= questions[question].user_email %> <br> on <%= questions[question].asken_on %></p>
+                    </div>
+                    <div class="cardBottom">
+                        <p class="cardKeywords">
+                            <b>Keywords: </b>
+                            <%= questions[question].keywords %>
+                        </p>
+                        <a href="/answerquestion/<%= questions[question].question_id %>">Answer</a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </main>
+    <footer>
+        <a href="/about" class="footerLink">About</a>
+        <a href="/contact" class="footerLink">Contact Us</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39/tree/main/Documentation" class="footerLink">Project Documentation</a>
+        <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+        <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
+    </footer>
+    <script src="/static/scripts/script.js"></script>
+</body>
+
+</html>

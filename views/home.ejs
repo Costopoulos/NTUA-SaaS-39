@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Me Anything</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+<body>
+    <script>
+        $( document ).ready(function() {
+
+            if ("<%= successMessage %>"){
+                toastr["success"]("<%= successMessage %>")
+            }
+            toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        });
+        </script>
+    <input type="checkbox" id="hamburgerMenu">
+    <nav>
+
+     <label for="hamburgerMenu">   <img class="hamburger" src="/static/img/bars-solid.svg" alt=""></label>
+        <!-- <p class="navTitle">
+            Askmeanything-39
+        </p> -->
+        <a href="/" class="navTitle">Askmeanything-39</a>
+        <% if (isAuthenticated){ %>
+            <!-- <div class="sign">
+                <a href="/signout" class="sign-up">SIGN OUT</a>
+            </div> -->
+            <div class="sign">
+                <a href="/dashboard" class="sign-in">DASHBOARD</a>
+                <form action="/signout" method="POST" class="sign">
+                    <button class="sign-up" style="background-color: Transparent;
+                    background-repeat:no-repeat;
+                    border: none;
+                    cursor:pointer;
+                    overflow: hidden;
+                    outline:none;
+                    font-size: medium;">
+                        SIGN OUT
+                    </button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="sign">
+                <a href="/signin" class="sign-in">SIGN IN</a>
+                <a href="/signup" class="sign-up">SIGN UP</a>
+            </div>
+        <% } %>
+    </nav>
+<main class="homePage">
+    <h1>
+        Welcome To AskMeAnything
+    </h1>
+    <div class="qLinks">
+<a class="qLink" href="/statisticsperkeyword">
+    <img src="/static/img/search.svg" alt="">
+    <p class="qTitle">Questions Per Keyword</p>
+    <p class="qSubtitle">Questions per keywords' statistics</p>
+</a>
+<a class="qLink" href="/statisticsperperiod">
+    <img src="/static/img/calendar.svg" alt="">
+    <p class="qTitle">Questions Per Period</p>
+    <p class="qSubtitle">Questions per period of time's statistics</p>
+</a>
+<a class="qLink" href="/createquestion">
+    <img src="/static/img/conversation.svg" alt="">
+    <p class="qTitle">Ask a New Question</p>
+    <p class="qSubtitle">Ask me anything you like!</p>
+</a>
+<a class="qLink" href="/listquestions">
+    <img src="/static/img/light-bulb.svg" alt="">
+    <p class="qTitle">Answer a Question</p>
+    <p class="qSubtitle">Browse and answer existing questions</p>
+</a>
+    </div>
+</main>
+<footer>
+    <a href="/about" class="footerLink">About</a>
+    <a href="/contact" class="footerLink">Contact Us</a>
+    <a href="https://github.com/Costopoulos/NTUA-SaaS-39/tree/main/Documentation" class="footerLink">Project Documentation</a>
+    <a href="https://github.com/Costopoulos/NTUA-SaaS-39" class="footerLink">Link On Github</a>
+    <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34" class="footerLink">Course Materials</a>
+</footer>
+    <script src="/static/scripts/script.js"></script>
+</body>
+</html>
